@@ -2,33 +2,23 @@ package anmao.mc.ned.config;
 
 import anmao.mc.ned.NED;
 import anmao.mc.ned.cap.invasion.InvasionCDT;
+import anmao.mc.ned.lib.EntityHelper;
 import anmao.mc.ned.lib._Math;
 import com.google.gson.Gson;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 
 public class InvasionMobList extends InvasionCDT {
     public MobListJson[] mobList;
     private final String fileName;
     public InvasionMobList(){
-        fileName = System.getProperty("user.dir")+"\\config\\ned\\InvasionMobList.json";
+        fileName = System.getProperty("user.dir")+MOB_LIST_FILE_PATH;
     }
     public void _start(){
         File file = new File(fileName);
@@ -40,7 +30,6 @@ public class InvasionMobList extends InvasionCDT {
             mobList = gson.fromJson(reader, MobListJson[].class);
         } catch (IOException e) {
             NED.LOG.error(e.getMessage());
-            //e.printStackTrace();
         }
     }
     private void reset(){
@@ -64,27 +53,22 @@ public class InvasionMobList extends InvasionCDT {
             NED.LOG.error(e.getMessage());
         }
     }
-    public static EntityType<?> getEntityByRegistryId(String registryId) {
-        //return ForgeRegistries.ENTITY_TYPES.getValue(new net.minecraft.resources.ResourceLocation(registryId));
-        return BuiltInRegistries.ENTITY_TYPE.get(new ResourceLocation(registryId));
-    }
     public void summonMob(ServerLevel level,double x,double y,double z){
         for (MobListJson monsterData : mobList) {
             if (monsterData.probability > _Math.getRandomDouble()) {
                 int count = _Math.getIntRandomNumber(monsterData.min, monsterData.max);
                 for (int i = 0; i < count; i++) {
-                    int radius = 16 + (int) (Math.random() * 17);
+                    int radius = SPAWN_MIN_RADIUS + (int) (Math.random() * 17);
                     double angle = Math.random() * 2 * Math.PI;
                     x += Math.cos(angle) * radius;
                     z += Math.sin(angle) * radius;
-                    EntityType<?> entityType = getEntityByRegistryId(monsterData.mid);
+                    EntityType<?> entityType = EntityHelper.getEntityType(monsterData.mid);
                     Entity entity = entityType.create(level);
                     if (entity != null) {
                         entity.setPos(x,y,z);
                         entity.getPersistentData().putBoolean(SAVE_INVASION_KEY,true);
                         level.addFreshEntity(entity);
                     }
-                    //entity.spawn(level,invasionTag,null,randomPos,MobSpawnType.EVENT,false,false);
                 }
             }
         }
@@ -96,10 +80,10 @@ public class InvasionMobList extends InvasionCDT {
         private double probability;
         public MobListJson(){}
         public MobListJson(String mid,int min,int max,double probability){
-            this.mid = mid;
-            this.min = min;
-            this.max = max;
-            this.probability = probability;
+            setMid(mid);
+            setMin(min);
+            setMax(max);
+            setProbability(probability);
         }
 
         public void setMid(String mid) {
@@ -132,6 +116,16 @@ public class InvasionMobList extends InvasionCDT {
 
         public void setProbability(double probability) {
             this.probability = probability;
+        }
+
+        @Override
+        public String toString() {
+            return "MobListJson{" +
+                    "mid='" + getMid() + '\'' +
+                    ", min=" + getMin() +
+                    ", max=" + getMax() +
+                    ", probability=" + getProbability() +
+                    '}';
         }
     }
 }

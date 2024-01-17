@@ -6,8 +6,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
-import java.util.List;
-
 @Mod.EventBusSubscriber(modid = NED.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Configs {
     public static final ForgeConfigSpec GENERAL_SPEC;
@@ -22,6 +20,7 @@ public class Configs {
     private static ForgeConfigSpec.DoubleValue DamageScaleMinDamage;
 
 
+    private static ForgeConfigSpec.BooleanValue InvasionImmunityNonPlayerDamage;
     private static ForgeConfigSpec.IntValue InvasionMinDayInterval;
     private static ForgeConfigSpec.IntValue InvasionMaxDayInterval;
     private static ForgeConfigSpec.DoubleValue InvasionProbability;
@@ -34,6 +33,7 @@ public class Configs {
     public static int ds_applicableTarget;
     public static float ds_scaleWithMaxHealth;
     public static float ds_minDamage;
+    public static boolean invasion_immunityNonPlayerDamage;
     public static int invasion_minDayInterval;
     public static int invasion_maxDayInterval;
     public static float invasion_probability;
@@ -71,6 +71,11 @@ public class Configs {
         builder.comment(" ");
         builder.comment("Invasion");
         builder.push("invasion");
+        InvasionImmunityNonPlayerDamage = builder
+                .comment("Intrusion mob immunity from non-player damage")
+                .comment("[default:true]")
+                .define("immunityNonPlayerDamage", true);
+
         InvasionMinDayInterval = builder
                 .comment("Minimum day interval")
                 .comment("[default:3]")
@@ -120,6 +125,7 @@ public class Configs {
         invasion_waves = InvasionWaves.get();
         invasion_mobSingleLimit = InvasionMobSingleLimit.get();
         invasion_dayTime = InvasionDayTime.get();
+        invasion_immunityNonPlayerDamage = InvasionImmunityNonPlayerDamage.get();
         InvasionMobList._start();
     }
 }

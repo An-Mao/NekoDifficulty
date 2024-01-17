@@ -1,7 +1,5 @@
 package anmao.mc.ned.lib;
 
-import net.minecraft.util.RandomSource;
-
 import java.util.Random;
 
 public class _Math {

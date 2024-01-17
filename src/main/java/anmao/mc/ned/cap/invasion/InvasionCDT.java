@@ -1,12 +1,14 @@
 package anmao.mc.ned.cap.invasion;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 
 public class InvasionCDT {
+    public static final String MOB_LIST_FILE_PATH = "\\config\\ned\\InvasionMobList.json";
     public static final String SAVE_KEY = "ned.invasion";
     public static final String SAVE_INVASION_KEY = "ned.invasion.is";
+
+    public static final int SPAWN_MIN_RADIUS = 16;
     public static final int TYPE_STOP = -1;
     public static final int TYPE_PRE = 0;
     public static final int TYPE_START = 1;

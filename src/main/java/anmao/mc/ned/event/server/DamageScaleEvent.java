@@ -1,7 +1,7 @@
 package anmao.mc.ned.event.server;
 
-import anmao.mc.ned.ConstantDataTable;
 import anmao.mc.ned.NED;
+import anmao.mc.ned.cap.invasion.InvasionEvent;
 import anmao.mc.ned.config.Configs;
 import anmao.mc.ned.lib.EntityHelper;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,13 +18,25 @@ public class DamageScaleEvent {
     public static void onAttack(LivingAttackEvent event){
     }
     @SubscribeEvent
-    public static void onDamage(LivingDamageEvent event){}
-    @SubscribeEvent
     public static void onHurt(LivingHurtEvent event){
         LivingEntity entity = event.getEntity();
-        if (EntityHelper.isServerLevel(entity) && Configs.ds_applicableTarget > 0 && !(entity instanceof ServerPlayer)){
+        if (EntityHelper.isServerLevel(entity) && !(entity instanceof ServerPlayer) && Configs.ds_applicableTarget > 0 ){
             if (Configs.ds_applicableTarget == 1){
-                if (!entity.getTags().contains(ConstantDataTable.InvasionTag)){
+                if (!InvasionEvent.isInvasionMob(entity)){
+                    return;
+                }
+            }
+            float oldDamage = event.getAmount();
+            float maxDamage = Math.max(Configs.ds_minDamage,entity.getMaxHealth() * Configs.ds_scaleWithMaxHealth);
+            event.setAmount(Math.min(oldDamage, maxDamage));
+        }
+    }
+    @SubscribeEvent
+    public static void onDamage(LivingDamageEvent event){
+        LivingEntity entity = event.getEntity();
+        if (EntityHelper.isServerLevel(entity) && !(entity instanceof ServerPlayer) && Configs.ds_applicableTarget > 0 ){
+            if (Configs.ds_applicableTarget == 1){
+                if (!InvasionEvent.isInvasionMob(entity)){
                     return;
                 }
             }
