@@ -13,7 +13,7 @@ public class FastSkill extends Skill {
     //移速大幅上升
     public FastSkill() {
         super("fast");
-        reg();
+        //reg();
     }
 
 
@@ -22,15 +22,14 @@ public class FastSkill extends Skill {
     }
 
     @Override
-    public EventData Event(EventData eventData) {
-        if (eventData.eventType == EventTypes.EVENT_SPAWN){
-            if (eventData.mainEntity != null){
-                AttributeInstance att = eventData.mainEntity.getAttribute(Attributes.MOVEMENT_SPEED);
+    public void Event(EventData eventData) {
+        if (eventData.getEventType() == EventTypes.EVENT_SPAWN){
+            if (eventData.getMainEntity() != null){
+                AttributeInstance att = eventData.getMainEntity().getAttribute(Attributes.MOVEMENT_SPEED);
                 if (att != null) {
                     att.addPermanentModifier(new AttributeModifier("skill.ned.fast.speed",0.5D, AttributeModifier.Operation.ADDITION));
                 }
             }
         }
-        return eventData;
     }
 }

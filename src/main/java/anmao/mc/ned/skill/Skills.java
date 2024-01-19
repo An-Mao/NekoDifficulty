@@ -1,12 +1,22 @@
 package anmao.mc.ned.skill;
 
+import anmao.mc.ned.skill.b2.AloneSkill;
+import anmao.mc.ned.skill.b2.FastSkill;
+import anmao.mc.ned.skill.b2.ResistantSkill;
+
 import java.util.*;
 
 public class Skills {
     private static final Skills instance = new Skills();
     public HashMap<String,Skill> SKILLS = new HashMap<>();
     public Skills(){
-        autoRegisterSkills();
+        //autoRegisterSkills();
+        registers();
+    }
+    private void registers(){
+        _reg(new ResistantSkill());
+        _reg(new FastSkill());
+        _reg(new AloneSkill());
     }
     private void autoRegisterSkills() {
         ServiceLoader<Skill> skillLoader = ServiceLoader.load(Skill.class);
@@ -31,11 +41,9 @@ public class Skills {
 
         Random random = new Random();
         String[] keys = SKILLS.keySet().toArray(new String[0]);
+        System.out.println("::keys::"+ Arrays.toString(keys));
         if (keys.length > 0) {
             for (int i = 0; i < num; i++) {
-                //String randomKey = keys[random.nextInt(keys.length)];
-                //Skill value = SKILLS.get(randomKey);
-                //selectedData.put(randomKey, value);
                 selectedData.add(keys[random.nextInt(keys.length)]);
             }
         }

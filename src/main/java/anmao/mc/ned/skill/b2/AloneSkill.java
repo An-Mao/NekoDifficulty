@@ -14,15 +14,14 @@ public class AloneSkill extends Skill {
     //怪物越少，攻击力，移速，减伤提升越多
     public AloneSkill() {
         super("alone");
-        reg();
+        //reg();
     }
 
     private void reg() {
         Skills.getInstance()._reg(this);
     }
     @Override
-    public EventData Event(EventData eventData) {
-        return eventData;
+    public void Event(EventData eventData) {
     }
 
 }

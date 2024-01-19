@@ -10,7 +10,7 @@ public abstract class Skill implements SkillCore{
         this.id = id;
     }
     @Override
-    public abstract EventData Event(EventData eventData);
+    public abstract void Event(EventData eventData);
 
     @Override
     public void Tick(LivingEntity livingEntity){}

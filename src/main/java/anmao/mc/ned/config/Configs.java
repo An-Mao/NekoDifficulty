@@ -30,6 +30,8 @@ public class Configs {
     private static ForgeConfigSpec.IntValue InvasionDayTime;
     public static InvasionMobList InvasionMobList = new InvasionMobList();
 
+    public static ForgeConfigSpec.IntValue SkillMobMaxSkill;
+
     public static int ds_applicableTarget;
     public static float ds_scaleWithMaxHealth;
     public static float ds_minDamage;
@@ -41,6 +43,8 @@ public class Configs {
     public static int invasion_dayTime;//入侵时间
     public static int invasion_waves;//入侵波数
     public static int invasion_mobSingleLimit;//单次波数的生物数量（临时）
+
+    public static int skill_mobMaxSkill;
 
 
     private static void setupConfig(ForgeConfigSpec.Builder builder) {
@@ -109,6 +113,16 @@ public class Configs {
         builder.pop();
 
 
+        builder.comment(" ");
+        builder.comment(" ");
+        builder.comment("Skill");
+        builder.push("Skill");
+        SkillMobMaxSkill = builder
+                .comment("Mob max skill")
+                .comment("[0.disable][default:10]")
+                .defineInRange("MobMaxSkill", 10, 0, 30);
+        builder.pop();
+
 
     }
     @SubscribeEvent
@@ -126,6 +140,8 @@ public class Configs {
         invasion_mobSingleLimit = InvasionMobSingleLimit.get();
         invasion_dayTime = InvasionDayTime.get();
         invasion_immunityNonPlayerDamage = InvasionImmunityNonPlayerDamage.get();
+
+        skill_mobMaxSkill = SkillMobMaxSkill.get();
         InvasionMobList._start();
     }
 }
