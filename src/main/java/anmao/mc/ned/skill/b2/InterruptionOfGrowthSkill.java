@@ -1,5 +1,10 @@
 package anmao.mc.ned.skill.b2;
 
-public class InterruptionOfGrowthSkill {
+import anmao.mc.ned.skill.Skill;
+
+public class InterruptionOfGrowthSkill extends Skill {
     //阻生
+    public InterruptionOfGrowthSkill() {
+        super("InterruptionOfGrowth");
+    }
 }

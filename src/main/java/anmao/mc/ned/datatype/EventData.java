@@ -5,7 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
 public class EventData {
-    private int eventType;
+    private EventType eventType;
     private LivingEntity mainEntity;
     private Entity secondaryEntity;
     private DamageSource damageSource;
@@ -18,16 +18,16 @@ public class EventData {
      * 2 ...
      */
     private int updateType;
-    public EventData(int eventType,LivingEntity mainEntity){
+    public EventData(EventType eventType, LivingEntity mainEntity){
         this(eventType,mainEntity,null,null,0);
     }
-    public EventData(int eventType,LivingEntity mainEntity,Entity secondaryEntity){
+    public EventData(EventType eventType, LivingEntity mainEntity, Entity secondaryEntity){
         this(eventType,mainEntity,secondaryEntity,null,0);
     }
-    public EventData(int eventType,LivingEntity mainEntity,Entity secondaryEntity,DamageSource damageSource){
+    public EventData(EventType eventType, LivingEntity mainEntity, Entity secondaryEntity, DamageSource damageSource){
         this(eventType,mainEntity,secondaryEntity,damageSource,0);
     }
-    public EventData(int eventType,LivingEntity mainEntity,Entity secondaryEntity,DamageSource damageSource,float amount ){
+    public EventData(EventType eventType, LivingEntity mainEntity, Entity secondaryEntity, DamageSource damageSource, float amount ){
         this.eventType = eventType;
         this.mainEntity = mainEntity;
         this.secondaryEntity = secondaryEntity;
@@ -37,11 +37,11 @@ public class EventData {
         this.updateType = -1;
     }
 
-    public int getEventType() {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(int eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
 

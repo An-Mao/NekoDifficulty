@@ -1,6 +1,8 @@
 package anmao.mc.ned;
 
+import anmao.mc.ned.attribute.AttributeReg;
 import anmao.mc.ned.config.Configs;
+import anmao.mc.ned.effect.EffectRegister;
 import anmao.mc.ned.skill.Skills;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +21,8 @@ public class NED
     public NED()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        AttributeReg.register(modEventBus);
+        EffectRegister.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configs.GENERAL_SPEC,ConstantDataTable.GoalConfigFile);
         Skills ss = Skills.getInstance();

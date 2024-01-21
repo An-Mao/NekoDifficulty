@@ -1,19 +1,20 @@
 package anmao.mc.ned.skill;
 
 import anmao.mc.ned.datatype.EventData;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 
-public abstract class Skill implements SkillCore{
+public abstract class Skill extends SkillCDT implements SkillCore{
     private final String id;
     public Skill(String id){
         this.id = id;
     }
     @Override
-    public abstract void Event(EventData eventData);
+    public void Event(EventData eventData , CompoundTag skillData){}
 
     @Override
-    public void Tick(LivingEntity livingEntity){}
+    public void Tick(LivingEntity livingEntity , CompoundTag skillData){}
 
     @Override
     public int GetMaxLvl() {

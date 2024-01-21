@@ -1,9 +1,10 @@
 package anmao.mc.ned.skill.b2;
 
 import anmao.mc.ned.datatype.EventData;
-import anmao.mc.ned.datatype.EventTypes;
+import anmao.mc.ned.datatype.EventType;
+import anmao.mc.ned.lib.AttributeHelper;
 import anmao.mc.ned.skill.Skill;
-import anmao.mc.ned.skill.Skills;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -16,19 +17,11 @@ public class FastSkill extends Skill {
         //reg();
     }
 
-
-    private void reg() {
-        Skills.getInstance()._reg(this);
-    }
-
     @Override
-    public void Event(EventData eventData) {
-        if (eventData.getEventType() == EventTypes.EVENT_SPAWN){
+    public void Event(EventData eventData, CompoundTag skillData) {
+        if (eventData.getEventType() == EventType.EVENT_FIRST_SPAWN){
             if (eventData.getMainEntity() != null){
-                AttributeInstance att = eventData.getMainEntity().getAttribute(Attributes.MOVEMENT_SPEED);
-                if (att != null) {
-                    att.addPermanentModifier(new AttributeModifier("skill.ned.fast.speed",0.5D, AttributeModifier.Operation.ADDITION));
-                }
+                AttributeHelper.setAttribute(eventData.getMainEntity(),Attributes.MOVEMENT_SPEED,ATTRIBUTE_SKILL_MOVE_SPEED,0.5D, AttributeModifier.Operation.ADDITION);
             }
         }
     }

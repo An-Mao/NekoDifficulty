@@ -1,0 +1,8 @@
+package anmao.mc.ned.attribute;
+
+import net.minecraft.world.entity.ai.attributes.Attribute;
+
+public class NEDAttributes extends AttributeReg{
+    public static Attribute hurtUp = UP_HURT.get();
+    public static Attribute hurtDown = HURT_DOWN.get();
+}

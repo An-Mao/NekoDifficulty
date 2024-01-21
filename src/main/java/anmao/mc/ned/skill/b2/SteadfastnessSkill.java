@@ -1,4 +1,9 @@
 package anmao.mc.ned.skill.b2;
 
-public class SteadfastnessSkill {
+import anmao.mc.ned.skill.Skill;
+
+public class SteadfastnessSkill extends Skill {
+    public SteadfastnessSkill() {
+        super("Steadfastness");
+    }
 }

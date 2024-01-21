@@ -1,5 +1,10 @@
 package anmao.mc.ned.skill.b2;
 
-public class ReincarnationSkill {
+import anmao.mc.ned.skill.Skill;
+
+public class ReincarnationSkill extends Skill {
     //转生
+    public ReincarnationSkill() {
+        super("Reincarnation");
+    }
 }
