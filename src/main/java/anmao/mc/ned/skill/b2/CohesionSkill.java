@@ -18,9 +18,12 @@ public class CohesionSkill extends Skill {
     public void Event(EventData eventData, CompoundTag skillData) {
         if (eventData.getEventType() == EventType.EVENT_DEATH){
             LivingEntity livingEntity = eventData.getMainEntity();
-            PrimedTnt tntEntity = new PrimedTnt(livingEntity.level(), livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(),livingEntity);
-            tntEntity.setFuse(60);
-            livingEntity.level().addFreshEntity(tntEntity);
+            if (!skillData.getBoolean("Cohesion")) {
+                skillData.putBoolean("Cohesion",true);
+                PrimedTnt tntEntity = new PrimedTnt(livingEntity.level(), livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity);
+                tntEntity.setFuse(60);
+                livingEntity.level().addFreshEntity(tntEntity);
+            }
         }
     }
 }

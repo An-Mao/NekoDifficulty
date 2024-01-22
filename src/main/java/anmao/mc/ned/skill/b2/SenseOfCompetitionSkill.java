@@ -20,7 +20,9 @@ public class SenseOfCompetitionSkill extends Skill {
         if (t > 300){
             skillData.putInt("tick",0);
             Player player = livingEntity.level().getNearestPlayer(livingEntity,10);
-            AttributeHelper.setTempAttribute(livingEntity, Attributes.MOVEMENT_SPEED,ATTRIBUTE_SKILL_MOVE_SPEED,player.getAttribute(Attributes.MOVEMENT_SPEED).getValue()/2, AttributeModifier.Operation.ADDITION,300);
+            if (player != null) {
+                AttributeHelper.setTempAttribute(livingEntity, Attributes.MOVEMENT_SPEED, ATTRIBUTE_SKILL_MOVE_SPEED, player.getAttribute(Attributes.MOVEMENT_SPEED).getValue() / 2, AttributeModifier.Operation.ADDITION, 300);
+            }
         }else {
             skillData.putInt("tick", t + 1);
         }

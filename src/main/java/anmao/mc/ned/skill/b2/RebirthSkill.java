@@ -15,6 +15,7 @@ public class RebirthSkill extends Skill {
     public void Event(EventData eventData, CompoundTag skillData) {
         if (eventData.getEventType() == EventType.EVENT_DEATH){
             if (!skillData.getBoolean("isRebirth")){
+                skillData.putBoolean("isRebirth",true);
                 eventData.getMainEntity().setHealth(eventData.getMainEntity().getMaxHealth());
                 eventData.setCancel(true);
                 eventData.setUpdateType(EVENT_UP_TYPE_CANCEL);

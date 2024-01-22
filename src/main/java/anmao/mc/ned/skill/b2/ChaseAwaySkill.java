@@ -16,15 +16,24 @@ public class ChaseAwaySkill extends Skill {
 
     @Override
     public void Tick(LivingEntity livingEntity, CompoundTag skillData) {
-        double pushStrength = 1.0;
-        Player player = livingEntity.level().getNearestPlayer(livingEntity, 10.0);
-        if (player != null && !livingEntity.noPhysics && !player.noPhysics) {
-            //System.out.println("push player");
-            double dX = player.getX() - livingEntity.getX();
-            double dZ = player.getZ() - livingEntity.getZ();
-            double pushX = dX * pushStrength;
-            double pushZ = dZ * pushStrength;
-            player.absMoveTo(player.getX() + pushX, player.getY(), player.getZ() + pushZ);
+        int t = skillData.getInt("tick");
+        if (t > 20) {
+            skillData.putInt("tick",0);
+            double pushStrength = 1.0;
+            Player player = livingEntity.level().getNearestPlayer(livingEntity, 10.0);
+            if (player != null && !livingEntity.noPhysics && !player.noPhysics) {
+                //System.out.println("push player");
+                double dX = player.getX() - livingEntity.getX();
+                double dZ = player.getZ() - livingEntity.getZ();
+                double pushX = dX * pushStrength;
+                double pushZ = dZ * pushStrength;
+                //player.push(player.getX() + pushX, player.getY(), player.getZ() + pushZ);
+
+
+                //player.absMoveTo(player.getX() + pushX, player.getY(), player.getZ() + pushZ);
+            }
+        }else {
+            skillData.putInt("tick",t+1);
         }
     }
 }

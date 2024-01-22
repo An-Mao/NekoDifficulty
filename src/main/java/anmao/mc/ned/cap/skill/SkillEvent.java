@@ -10,11 +10,16 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.npc.Npc;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -36,6 +41,9 @@ public class SkillEvent {
         @SubscribeEvent
         public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof LivingEntity livingEntity && notPlayer(event.getObject())) {
+                if (livingEntity instanceof Animal || livingEntity instanceof Npc){
+                    return;
+                }
                 if (!livingEntity.getCapability(SkillProvider.MOB_SKILLS).isPresent()) {
                     event.addCapability(new ResourceLocation(NED.MOD_ID, "skill"), new SkillProvider());
                 }
