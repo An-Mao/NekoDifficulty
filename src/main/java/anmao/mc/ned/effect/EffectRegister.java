@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class EffectRegister {
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, NED.MOD_ID);
     public static final RegistryObject<MobEffect> FETTERS = EFFECTS.register("fetters", FettersEffect::new);
+    public static final RegistryObject<MobEffect> CHAO = EFFECTS.register("chao", ChaoEffect::new);
     public static void register(IEventBus eventBus){
         EFFECTS.register(eventBus);
     }

@@ -7,8 +7,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
 import java.util.Set;
 
 public class EntityHelper {
@@ -38,5 +40,11 @@ public class EntityHelper {
         zombie.setPos(spawnX, y, spawnZ);
         zombie.addTag(id);
         level.addFreshEntity(zombie);
+    }
+    public static List<? extends LivingEntity> getLivingEntities(LivingEntity livingEntity){
+        return getLivingEntities(livingEntity,10);
+    }
+    public static List<? extends LivingEntity> getLivingEntities(LivingEntity livingEntity, int radius){
+        return getEntityLevel(livingEntity).getEntities(EntityTypeTest.forClass(livingEntity.getClass()), livingEntity.getBoundingBox().inflate(radius), Entity::isAlive);
     }
 }

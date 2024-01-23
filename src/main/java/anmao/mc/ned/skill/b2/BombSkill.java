@@ -29,9 +29,9 @@ public class BombSkill extends Skill {
                 double motionY = playerPos.y - livingEntityY;
                 double motionZ = playerPos.z - livingEntityZ;
 
-                LargeFireball largeFireball = new LargeFireball(livingEntity.level(), livingEntity, motionX, motionY, motionZ, 5);
+                LargeFireball largeFireball = new LargeFireball(livingEntity.level(), livingEntity, motionX, motionY, motionZ, 3);
 
-                largeFireball.setPos(livingEntityX, livingEntityY, livingEntityZ);
+                largeFireball.setPos(livingEntityX, livingEntityY , livingEntityZ);
 
                 largeFireball.setDeltaMovement(motionX, motionY, motionZ);
 
