@@ -1,6 +1,7 @@
 package anmao.mc.ned.skill;
 
 import anmao.mc.ned.skill.b2.*;
+import net.minecraft.network.chat.Component;
 
 import java.util.*;
 
@@ -94,6 +95,14 @@ public class Skills {
 
     public Skill getSkill(String id){
         return SKILLS.get(id);
+    }
+    public Component getComponent(String s){
+        //System.out.println("SKILLS"+SKILLS);
+        Skill skill = getSkill(s);
+        if (skill != null) {
+            return skill.GetName();
+        }
+        return Component.literal("error");
     }
     private static <K, V> Map.Entry<K, V> getRandomEntry(Map<K, V> map) {
         java.util.List<Map.Entry<K, V>> entryList = new java.util.ArrayList<>(map.entrySet());

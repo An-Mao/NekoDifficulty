@@ -10,6 +10,6 @@ interface SkillCore {
     void Tick(LivingEntity livingEntity, CompoundTag skillData);
     int GetMaxLvl();
     String GetID();
-    Component GetDes();
+    Component GetName();
     boolean CanAdd(LivingEntity livingEntity);
 }

@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 public class RainbowPositionSkill extends Skill {
     //彩虹立场
@@ -18,12 +19,7 @@ public class RainbowPositionSkill extends Skill {
         int t = skillData.getInt("tick");
         if (t > 10){
             skillData.putInt("tick",0);
-            Iterable<MobEffectInstance> effects = livingEntity.getActiveEffects();
-            effects.forEach(mobEffectInstance -> {
-                if (mobEffectInstance.getEffect().isBeneficial()){
-                    livingEntity.removeEffect(mobEffectInstance.getEffect());
-                }
-            });
+            livingEntity.getActiveEffects().removeIf(mobEffectInstance -> mobEffectInstance.getEffect().isBeneficial());
         }else {
             skillData.putInt("tick",t + 1);
         }

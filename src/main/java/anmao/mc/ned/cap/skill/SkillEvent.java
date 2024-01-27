@@ -5,9 +5,13 @@ import anmao.mc.ned.config.Configs;
 import anmao.mc.ned.datatype.EventData;
 import anmao.mc.ned.datatype.EventType;
 import anmao.mc.ned.lib._Math;
+import anmao.mc.ned.net.NEDNetCore;
+import anmao.mc.ned.net.SkillDataSendToClient;
 import anmao.mc.ned.skill.SkillCDT;
 import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
@@ -20,12 +24,14 @@ import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.NetworkHooks;
 
 import java.util.HashMap;
 
@@ -67,8 +73,10 @@ public class SkillEvent {
                     if (eventData.getUpdateType() == SkillCDT.EVENT_UP_TYPE_CANCEL) {
                         event.setCanceled(eventData.isCancel());
                     }
+                    NEDNetCore.sendToPlayer(new SkillDataSendToClient(skillCap.getSkillAndData(),event.getEntity().getId()),event.getEntity());
                 });
             }
+
         }
 
         @SubscribeEvent

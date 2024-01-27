@@ -25,7 +25,6 @@ public class TentacleClientEvent {
             if (player != null) {
                 List<? extends LivingEntity> entities = EntityHelper.getEntityLevel(player).getEntities(EntityTypeTest.forClass(LivingEntity.class), player.getBoundingBox().inflate(20), Entity::isAlive);
                 final boolean[] b = {false};
-                System.out.println("---------------tentacle---------------");
 
                 for (LivingEntity livingEntity : entities) {
                     livingEntity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {

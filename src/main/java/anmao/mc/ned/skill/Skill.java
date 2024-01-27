@@ -27,7 +27,7 @@ public abstract class Skill extends SkillCDT implements SkillCore{
     }
 
     @Override
-    public Component GetDes() {
+    public Component GetName() {
         return Component.translatable(GetID());
     }
 

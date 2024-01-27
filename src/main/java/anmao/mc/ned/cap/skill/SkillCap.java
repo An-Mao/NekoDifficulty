@@ -5,11 +5,10 @@ import anmao.mc.ned.skill.Skills;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class SkillCap {
     private boolean notFirstJoin = false;
@@ -62,6 +61,13 @@ public class SkillCap {
 
 
 
+    public List<Component> getSkillComponent(){
+        List<Component> components = new ArrayList<>();
+        for (String sk : skills.keySet()){
+            components.add(Skills.getInstance().getComponent(skills.get(sk)));
+        }
+        return components;
+    }
 
 
 
@@ -120,5 +126,23 @@ public class SkillCap {
         }
         notFirstJoin = nbt.getBoolean("ned.skill.first.join");
         notFirstSpawn = nbt.getBoolean("ned.skill.first.spawn");
+    }
+    public CompoundTag getSkillAndData(){
+        CompoundTag nbt = new CompoundTag();
+        ListTag tags = new ListTag();
+        for (String skillKey:skills.keySet()){
+            CompoundTag tag = new CompoundTag();
+            tag.putString("slot",skillKey);
+            tag.putString("id",skills.get(skillKey));
+            tag.put("data",skillData.get(skillKey));
+            tags.add(tag);
+        }
+        nbt.put("ned.skill.list",tags);
+        nbt.putBoolean("ned.skill.first.join",notFirstJoin);
+        nbt.putBoolean("ned.skill.first.spawn",notFirstSpawn);
+        return nbt;
+    }
+    public void handlePacket(CompoundTag compoundTag){
+        loadNBTData(compoundTag);
     }
 }
