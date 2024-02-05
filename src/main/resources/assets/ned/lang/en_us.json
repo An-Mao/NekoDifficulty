@@ -57,7 +57,7 @@
   "skill.ned.Recover": "Recover",
   "skill.ned.Reincarnation": "Reincarnation",
   "skill.ned.Repulse": "Repulse",
-  "skill.ned.Resistant": "Resistant",
+  "skill.ned.resistant": "Resistant",
   "skill.ned.ReverseEntropy": "Reverse Entropy",
   "skill.ned.RightBlessing": "Right Blessing",
   "skill.ned.SearingShield": "Searing Shield",
@@ -71,8 +71,40 @@
   "skill.ned.Swirl": "Swirl",
   "skill.ned.Symbiosis": "Symbiosis",
   "skill.ned.Teleportation": "Teleportation",
-  "skill.ned.Tentacle": "tentacle",
+  "skill.ned.tentacle": "tentacle",
   "skill.ned.thunderthorn_shield": "Thunderthorn Shield",
   "skill.ned.timid": "Timid",
-  "skill.ned.trail_of_Flames": "Trail Of Flames"
+  "skill.ned.trail_of_Flames": "Trail Of Flames",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "oracle.ned.tip.pace_1": "You came into the world unnoticed.",
+  "oracle.ned.tip.pace_2": "You made a connection with the world.",
+  "oracle.ned.tip.pace_3": "Your story is becoming known.",
+  "oracle.ned.tip.pace_4": "You're connected to the world.",
+  "oracle.ned.tip.pace_5": "You've brought a lot of karma into this world.",
+  "oracle.ned.tip.pace_6": "The gods have noticed you.",
+  "oracle.ned.tip.pace_7": "The gods are watching you.",
+  "oracle.ned.tip.pace_8": "The gods are watching you all the time.",
+  "oracle.ned.tip.start": "The gods have sent an oracle.",
+  "oracle.ned.tip.bad_end": "You have failed to fulfill the demands of the oracle. The gods will punish you.",
+  "oracle.ned.tip.happy_end": "You have fulfilled the oracle. The gods are pleased with you.",
+  "oracle.ned.CollectionItems.tip": "You need to collect {1} {2} in {0} days"
+
+
+
+
+
 }

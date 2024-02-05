@@ -1,20 +1,31 @@
 package anmao.mc.ned.skill;
 
 import anmao.mc.ned.skill.b2.*;
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.network.chat.Component;
 
-import java.util.*;
+import java.util.ServiceLoader;
 
 public class Skills {
     private static final Skills instance = new Skills();
-    public HashMap<String,Skill> SKILLS = new HashMap<>();
+    public ImmutableMap<String, Skill> SKILLS;
+    public String[] SKILL_KEYS;
+    private final ImmutableMap.Builder<String, Skill> builder = ImmutableMap.builder();
     public Skills(){
-        //autoRegisterSkills();
-        registers();
+        autoRegister();
+        //registers();
+    }
+
+    private void autoRegister() {
+        ImmutableMap.Builder<String, Skill> builder = ImmutableMap.builder();
+        ServiceLoader<Skill> skillLoader = ServiceLoader.load(Skill.class);
+        for (Skill skill : skillLoader) {
+            builder.put(skill.GetID(),skill);
+        }
+        SKILLS = builder.build();
+        SKILL_KEYS = SKILLS.keySet().toArray(new String[0]);
     }
     private void registers(){
-        //_reg(new ResistantSkill());
-        //_reg(new FastSkill());
         _reg(new AloneSkill());
         _reg(new BombSkill());
         _reg(new ChaoSkill());
@@ -82,17 +93,11 @@ public class Skills {
         _reg(new ThunderthornShieldSkill());
         _reg(new TimidSkill());
         _reg(new TrailOfFlamesSkill());
+        SKILLS = builder.build();
     }
-    private void autoRegisterSkills() {
-        ServiceLoader<Skill> skillLoader = ServiceLoader.load(Skill.class);
-        for (Skill skill : skillLoader) {
-            _reg(skill);
-        }
+    private void _reg(Skill skill){
+        builder.put(skill.GetID(),skill);
     }
-    public void _reg(Skill skill){
-        SKILLS.put(skill.GetID(),skill);
-    }
-
     public Skill getSkill(String id){
         return SKILLS.get(id);
     }
@@ -104,24 +109,6 @@ public class Skills {
         }
         return Component.literal("error");
     }
-    private static <K, V> Map.Entry<K, V> getRandomEntry(Map<K, V> map) {
-        java.util.List<Map.Entry<K, V>> entryList = new java.util.ArrayList<>(map.entrySet());
-        int randomIndex = new Random().nextInt(entryList.size());
-        return entryList.get(randomIndex);
-    }
-    public List<String> getRandomSelection(int num) {
-        List<String> selectedData = new ArrayList<>();
-
-        Random random = new Random();
-        String[] keys = SKILLS.keySet().toArray(new String[0]);
-        if (keys.length > 0) {
-            for (int i = 0; i < num; i++) {
-                selectedData.add(keys[random.nextInt(keys.length)]);
-            }
-        }
-        return selectedData;
-    }
-
     public static Skills getInstance() {
         return instance;
     }

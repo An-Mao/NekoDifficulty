@@ -56,7 +56,7 @@
   "skill.ned.Recover": "复苏",
   "skill.ned.Reincarnation": "转生",
   "skill.ned.Repulse": "击退",
-  "skill.ned.Resistant": "厚皮",
+  "skill.ned.resistant": "厚皮",
   "skill.ned.ReverseEntropy": "逆熵科技",
   "skill.ned.RightBlessing": "右之祝福",
   "skill.ned.SearingShield": "灼热之盾",
@@ -70,8 +70,37 @@
   "skill.ned.Swirl": "涡流",
   "skill.ned.Symbiosis": "共生",
   "skill.ned.Teleportation": "瞬移",
-  "skill.ned.Tentacle": "触手",
+  "skill.ned.tentacle": "触手",
   "skill.ned.thunderthorn_shield": "雷棘之盾",
   "skill.ned.timid": "胆小",
-  "skill.ned.trail_of_Flames": "烈焰轨迹"
+  "skill.ned.trail_of_Flames": "烈焰轨迹",
+
+
+
+
+
+
+
+
+
+
+  "oracle.ned.tip.pace_1": "你悄然降临到了这个世界",
+  "oracle.ned.tip.pace_2": "你与这个世界建立了联系",
+  "oracle.ned.tip.pace_3": "你的事迹正在被人们所熟知",
+  "oracle.ned.tip.pace_4": "你与这个世界紧密相连",
+  "oracle.ned.tip.pace_5": "你为这个世界带来了诸多因果",
+  "oracle.ned.tip.pace_6": "诸神注意到了你",
+  "oracle.ned.tip.pace_7": "诸神正在观察你",
+  "oracle.ned.tip.pace_8": "诸神无时不刻注视着你",
+  "oracle.ned.tip.start": "诸神降下了神谕",
+  "oracle.ned.tip.bad_end": "你未能满足神谕的要求，诸神将对你降下惩罚",
+  "oracle.ned.tip.happy_end": "你完成了神谕，诸神对你很满意",
+  "oracle.ned.CollectionItems.tip": "你需要在{0}天内收集{1}个{2}"
+
+
+
+
+
+
+
 }

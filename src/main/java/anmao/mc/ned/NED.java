@@ -3,7 +3,9 @@ package anmao.mc.ned;
 import anmao.mc.ned.attribute.AttributeReg;
 import anmao.mc.ned.config.Configs;
 import anmao.mc.ned.effect.EffectRegister;
+import anmao.mc.ned.lib.ItemHelper;
 import anmao.mc.ned.net.NEDNetCore;
+import anmao.mc.ned.oracles.Oracles;
 import anmao.mc.ned.skill.Skills;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,9 +31,14 @@ public class NED
         MinecraftForge.EVENT_BUS.register(this);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configs.GENERAL_SPEC,ConstantDataTable.GoalConfigFile);
         Skills ss = Skills.getInstance();
+        Oracles.getInstance();
     }
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         NEDNetCore.reg();
+        _load();
+    }
+    private void _load(){
+        ItemHelper.loadAllItems();
     }
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.vehicle.MinecartTNT;
 public class CohesionSkill extends Skill {
     //凝聚
     public CohesionSkill() {
-        super("cohesion");
+        super("Cohesion");
     }
 
     @Override

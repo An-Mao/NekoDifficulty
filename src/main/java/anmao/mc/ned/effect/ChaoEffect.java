@@ -5,6 +5,6 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class ChaoEffect extends MobEffect {
     protected ChaoEffect() {
-        super(MobEffectCategory.HARMFUL, 0x00ff00);
+        super(MobEffectCategory.HARMFUL, 0xffff00);
     }
 }

@@ -29,7 +29,7 @@ public class TentacleClientEvent {
                 for (LivingEntity livingEntity : entities) {
                     livingEntity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {
                         if (skillCap.hasSkill("skill.ned.tentacle")){
-                            System.out.println("---------------tent---------------");
+                            //System.out.println("---------------tent---------------");
                             double directionX = livingEntity.getX() - player.getX();
                             double directionY = livingEntity.getY() - player.getY();
                             double directionZ = livingEntity.getZ() - player.getZ();

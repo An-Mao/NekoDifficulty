@@ -35,10 +35,10 @@ public class SkillCap {
     public void GiveRandomSkills(int num) {
         if (skills.isEmpty()) {
             Random random = new Random();
-            String[] keys = Skills.getInstance().SKILLS.keySet().toArray(new String[0]);
-            if (keys.length > 0) {
+            //String[] keys = Skills.getInstance().SKILLS.keySet().toArray(new String[0]);
+            if (Skills.getInstance().SKILL_KEYS.length > 0) {
                 for (int i = 0; i < num; i++) {
-                    giveNewSkill(keys[random.nextInt(keys.length)]);
+                    giveNewSkill(Skills.getInstance().SKILL_KEYS[random.nextInt(Skills.getInstance().SKILL_KEYS.length)]);
                 }
             }
         }

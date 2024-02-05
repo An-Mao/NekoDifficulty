@@ -1,4 +1,4 @@
-package anmao.mc.ned.event.server;
+package anmao.mc.ned.widget.damage;
 
 import anmao.mc.ned.NED;
 import anmao.mc.ned.cap.invasion.InvasionEvent;
