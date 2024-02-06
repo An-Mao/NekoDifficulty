@@ -1,4 +1,4 @@
-package anmao.mc.ned.oracles;
+package anmao.mc.ned.oracle;
 
 import anmao.mc.ned.datatype.EventType;
 import net.minecraft.nbt.CompoundTag;
@@ -40,6 +40,6 @@ public abstract class Oracle extends OracleCDT implements OracleCore {
         return player.getPersistentData().getCompound(getSaveKey());
     }
     public void penalty(Player player){
-        //
+        player.die(player.damageSources().fellOutOfWorld());
     }
 }

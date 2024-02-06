@@ -1,6 +1,8 @@
 package anmao.mc.ned.lib;
 
 import anmao.mc.ned.ConstantDataTable;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
 
 public class TimeHelper {
     public static int TickToDay(int gameTick){
@@ -23,5 +25,15 @@ public class TimeHelper {
     }
     public static String tickToTime(int tick){
         return String.valueOf(tick / 1200);
+    }
+
+    public static long getOverWorldTime(MinecraftServer server){
+        return server.overworld().getGameTime();
+    }
+    public static long getOverWorldTime(ServerPlayer serverPlayer){
+        return getOverWorldTime(serverPlayer.server);
+    }
+    public static long getTimeIntervals(long time1 ,long time2){
+        return time1 - time2;
     }
 }

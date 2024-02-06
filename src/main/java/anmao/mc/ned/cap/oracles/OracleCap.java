@@ -1,8 +1,8 @@
 package anmao.mc.ned.cap.oracles;
 
 import anmao.mc.ned.lib._Math;
-import anmao.mc.ned.oracles.Oracle;
-import anmao.mc.ned.oracles.Oracles;
+import anmao.mc.ned.oracle.Oracle;
+import anmao.mc.ned.oracle.Oracles;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 
@@ -24,6 +24,9 @@ public class OracleCap {
     }
     public int getPace(){
         return pace;
+    }
+    public boolean isMaxPlace(){
+        return pace >= maxPace;
     }
     public void giveOracle(){
         if (oracle == null && pace >= maxPace){

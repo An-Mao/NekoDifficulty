@@ -5,7 +5,7 @@ import anmao.mc.ned.config.Configs;
 import anmao.mc.ned.effect.EffectRegister;
 import anmao.mc.ned.lib.ItemHelper;
 import anmao.mc.ned.net.NEDNetCore;
-import anmao.mc.ned.oracles.Oracles;
+import anmao.mc.ned.oracle.Oracles;
 import anmao.mc.ned.skill.Skills;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;

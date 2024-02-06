@@ -68,6 +68,9 @@ public class SkillCap {
         }
         return components;
     }
+    public List<String> getAllSkill(){
+        return skills.keySet().stream().toList();
+    }
 
 
 

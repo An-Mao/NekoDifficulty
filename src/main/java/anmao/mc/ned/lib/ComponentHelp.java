@@ -15,4 +15,7 @@ public class ComponentHelp {
             serverPlayer.sendSystemMessage(Component.literal(str));
         }
     }
+    public static void sendFormatMsgWithKey (ServerPlayer serverPlayer, String s, Object... data){
+        sendFormatMsg(serverPlayer,Component.translatable(s).getString(),data);
+    }
 }

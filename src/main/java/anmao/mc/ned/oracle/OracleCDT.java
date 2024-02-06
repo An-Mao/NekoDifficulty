@@ -1,4 +1,4 @@
-package anmao.mc.ned.oracles;
+package anmao.mc.ned.oracle;
 
 public class OracleCDT {
     public static final String MSG_START = "oracle.ned.tip.start";

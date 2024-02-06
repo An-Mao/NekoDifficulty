@@ -1,8 +1,6 @@
-package anmao.mc.ned.oracles;
+package anmao.mc.ned.oracle;
 
 import anmao.mc.ned.datatype.EventType;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.Event;
 

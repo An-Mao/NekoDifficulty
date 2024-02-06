@@ -1,14 +1,12 @@
-package anmao.mc.ned.oracles.necessarily;
+package anmao.mc.ned.oracle.necessarily;
 
 import anmao.mc.ned.cap.oracles.OracleProvider;
 import anmao.mc.ned.lib.ComponentHelp;
 import anmao.mc.ned.lib.ItemHelper;
+import anmao.mc.ned.lib.TimeHelper;
 import anmao.mc.ned.lib._Math;
-import anmao.mc.ned.oracles.Oracle;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
+import anmao.mc.ned.oracle.Oracle;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +15,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.registries.RegistryObject;
 
 public class CollectionItems extends Oracle {
     public CollectionItems() {
@@ -35,7 +32,7 @@ public class CollectionItems extends Oracle {
                     if (itemNumber >= compoundTag.getInt("number")){
                         serverPlayer.getCapability(OracleProvider.PLAYER_ORACLE).ifPresent(oracleCap -> {
                             oracleCap.setOracle(null);
-                            ComponentHelp.sendFormatMsg(serverPlayer,MSG_END_HAPPY);
+                            ComponentHelp.sendFormatMsgWithKey(serverPlayer,MSG_END_HAPPY);
                         });
                     }
                 }
@@ -43,10 +40,10 @@ public class CollectionItems extends Oracle {
         }else if (event instanceof TickEvent.PlayerTickEvent playerTickEvent && playerTickEvent.phase == TickEvent.Phase.START){
             if (playerTickEvent.player instanceof ServerPlayer serverPlayer){
                 CompoundTag compoundTag = serverPlayer.getPersistentData().getCompound(getSaveKey());
-                if (serverPlayer.getServer().overworld().getGameTime() - compoundTag.getLong("start") > compoundTag.getInt("time")) {
+                if (TimeHelper.getOverWorldTime(serverPlayer) - compoundTag.getLong("start") > compoundTag.getInt("time")) {
                     serverPlayer.getCapability(OracleProvider.PLAYER_ORACLE).ifPresent(oracleCap -> {
                         oracleCap.setOracle(null);
-                        ComponentHelp.sendFormatMsg(serverPlayer,MSG_END_BAD);
+                        ComponentHelp.sendFormatMsgWithKey(serverPlayer,MSG_END_BAD);
                         penalty(serverPlayer);
                     });
                 }
@@ -64,10 +61,11 @@ public class CollectionItems extends Oracle {
             int time = _Math.getIntRandomNumber(1, 7);
             nbt.putString("item", itemStack.getItem().toString());
             nbt.putInt("number", number);
-            nbt.putLong("start", player.getServer().overworld().getGameTime());
+            nbt.putLong("start", TimeHelper.getOverWorldTime((ServerPlayer) player));
             nbt.putInt("time", time);
             player.getPersistentData().put(getSaveKey(), nbt);
-            ComponentHelp.sendFormatMsg((ServerPlayer) player, getDescriptionId(), time, number, itemStack.getDisplayName());
+
+            ComponentHelp.sendFormatMsgWithKey((ServerPlayer) player, getDescriptionId(), time, number, itemStack.getDisplayName());
         }
     }
 }
