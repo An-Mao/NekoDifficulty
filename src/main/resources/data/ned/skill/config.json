@@ -1,0 +1,16 @@
+{
+  "skill id": {
+    "enable": true,
+    "par": "1"
+  },
+  "skill id2": {
+    "enable": true,
+    "par": 1,
+    "par2": false
+  },
+  "skill id3": {
+    "enable": true,
+    "par": 1,
+    "par2": false
+  }
+}

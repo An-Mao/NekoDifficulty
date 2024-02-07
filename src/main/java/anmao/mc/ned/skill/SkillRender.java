@@ -4,6 +4,7 @@ import anmao.mc.ned.NED;
 import anmao.mc.ned.cap.skill.SkillProvider;
 import anmao.mc.ned.lib.EntityHelper;
 import anmao.mc.ned.lib._Math;
+import anmao.mc.ned.lib.math.UniformCircleDistribution;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
@@ -31,19 +32,23 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = NED.MOD_ID,value = Dist.CLIENT)
 public class SkillRender {
     private static final Minecraft MC = Minecraft.getInstance();
-    private static final ResourceLocation TEST_ICON = new ResourceLocation(NED.MOD_ID, "textures/skill/test.png");
     @SubscribeEvent
     public static void onRender(RenderNameTagEvent event){
         if (event.getEntity() instanceof LivingEntity livingEntity) {
             livingEntity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {
                 PoseStack poseStack = event.getPoseStack();
-                //poseStack.pushPose();
-                //poseStack.translate(0.0,livingEntity.getBbHeight()+1.5F,0.0);
-                //poseStack.mulPose(MC.cameraEntity.getDirection().getRotation());
-                //poseStack.scale(-0.025F, -0.025F, 0.025F);
+                float lY = livingEntity.getBbHeight() / 2;
+                poseStack.pushPose();
+
+                poseStack.translate(0.0,lY,0.0);
+                Quaternionf camera = MC.getEntityRenderDispatcher().cameraOrientation();
+                camera.x = 0;
+                camera.z = 0;
+                poseStack.mulPose(camera);
+                poseStack.scale(-0.025F, -0.025F, 0.025F);
                 draw(livingEntity,poseStack,skillCap.getAllSkill());
-                //RenderSystem.setShaderColor(1.0F,1.0F,1.0F,1.0F);
-                //poseStack.popPose();
+                RenderSystem.setShaderColor(1.0F,1.0F,1.0F,1.0F);
+                poseStack.popPose();
                 //RenderSystem.disableDepthTest();
             });
         }
@@ -54,21 +59,21 @@ public class SkillRender {
         }
         RenderSystem.enableDepthTest();
         RenderSystem.defaultBlendFunc();
-        float y = entity.getBbHeight() / 2;
         //poseStack.pushPose();
         //poseStack.translate(0.0F,y,0.0F);
-        Quaternionf camera = MC.getEntityRenderDispatcher().cameraOrientation();
+        //Quaternionf camera = MC.getEntityRenderDispatcher().cameraOrientation();
         //poseStack.mulPose(new Quaternionf(camera.x, 0, camera.z, camera.w));
         //poseStack.scale(0.025F, 0.025F, 0.025F);
         int i = 0;
-        ArrayList<Point2D.Double> pointPoss = _Math.getPosWithCircle(entity.getBbWidth(), skills.size());
+        ArrayList<Point2D.Double> pointPoss = UniformCircleDistribution.distributePoints(entity.getBbWidth()* 40, skills.size());
+        //ArrayList<Point2D.Double> pointPoss = _Math.getPosWithCircle(entity.getBbWidth()* 40, skills.size());
         for (String id : skills){
             Point2D.Double point = pointPoss.get(i);
             poseStack.pushPose();
-            poseStack.translate(point.x+0.4,y,-point.y);
-            poseStack.mulPose(camera);
-            poseStack.scale(-0.025F, 0.025F, 0.025F);
-            ResourceLocation icon = new ResourceLocation(NED.MOD_ID,"textures/skill/test.png");
+            poseStack.translate(point.x-16,0,point.y);
+            //poseStack.mulPose(camera);
+            //poseStack.scale(-0.025F, 0.025F, 0.025F);
+            ResourceLocation icon = new ResourceLocation(NED.MOD_ID,"textures/skill/skill_test.png");
             RenderSystem.setShaderTexture(0,icon);
             RenderSystem.enableBlend();
             RenderSystem.defaultBlendFunc();

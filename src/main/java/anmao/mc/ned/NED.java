@@ -9,7 +9,9 @@ import anmao.mc.ned.oracle.Oracles;
 import anmao.mc.ned.skill.Skills;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -37,6 +39,12 @@ public class NED
     {
         NEDNetCore.reg();
         _load();
+    }
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event)
+    {
+        System.out.println("Server Start");
+        Skills.getInstance().skillsData.loadJSONFile(event.getServer());
     }
     private void _load(){
         ItemHelper.loadAllItems();

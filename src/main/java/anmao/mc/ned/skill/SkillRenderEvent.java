@@ -27,10 +27,8 @@ import org.joml.Vector3fc;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = NED.MOD_ID,value = Dist.CLIENT)
 public class SkillRenderEvent {
     private static final float hPi = (float) (180F / Math.PI);
-    @SubscribeEvent
     public static void onRender(RenderNameTagEvent event){
         if (event.getEntity() instanceof LivingEntity livingEntity){
             livingEntity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {
