@@ -10,7 +10,7 @@ public class DarkPositionSkill extends Skill {
     //黑暗立场
     //减少受到的伤害，处于异常时可造成正常伤害
     public DarkPositionSkill() {
-        super("DarkPosition");
+        super("dark_position");
     }
 
     @Override

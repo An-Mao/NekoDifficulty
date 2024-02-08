@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class RainbowPositionSkill extends Skill {
     //彩虹立场
     public RainbowPositionSkill() {
-        super("RainbowPosition");
+        super("rainbow_position");
     }
 
     @Override

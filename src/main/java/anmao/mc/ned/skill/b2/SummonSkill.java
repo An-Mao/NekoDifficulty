@@ -8,7 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class SummonSkill extends Skill {
     //召唤
     public SummonSkill() {
-        super("Summon");
+        super("summon");
     }
 
     @Override

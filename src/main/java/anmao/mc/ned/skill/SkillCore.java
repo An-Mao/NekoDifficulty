@@ -9,7 +9,9 @@ interface SkillCore {
     void Event(EventData eventData, CompoundTag skillData);
     void Tick(LivingEntity livingEntity, CompoundTag skillData);
     int GetMaxLvl();
+    @Deprecated
     String GetID();
+    @Deprecated
     Component GetName();
     boolean CanAdd(LivingEntity livingEntity);
 }

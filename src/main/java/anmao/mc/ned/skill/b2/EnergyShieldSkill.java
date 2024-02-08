@@ -14,7 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class EnergyShieldSkill extends Skill {
     //源能之盾
     public EnergyShieldSkill() {
-        super("EnergyShield");
+        super("energy_shield");
     }
 
     @Override

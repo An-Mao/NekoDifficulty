@@ -5,6 +5,6 @@ import anmao.mc.ned.skill.Skill;
 public class InterruptionOfGrowthSkill extends Skill {
     //阻生
     public InterruptionOfGrowthSkill() {
-        super("InterruptionOfGrowth");
+        super("interruption_of_growth");
     }
 }

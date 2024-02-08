@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class RecoverSkill extends Skill {
     //复苏
     public RecoverSkill() {
-        super("Recover");
+        super("recover");
     }
 
     @Override

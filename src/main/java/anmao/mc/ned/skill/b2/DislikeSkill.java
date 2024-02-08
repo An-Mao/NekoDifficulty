@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 public class DislikeSkill extends Skill {
     //讨厌
     public DislikeSkill() {
-        super("Dislike");
+        super("dislike");
     }
 
     @Override

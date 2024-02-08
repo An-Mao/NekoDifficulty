@@ -1,6 +1,7 @@
 package anmao.mc.ned.skill;
 
 import anmao.mc.ned.NED;
+import anmao.mc.ned.lib.Manger;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -18,10 +19,11 @@ public class SkillsData {
     private final ResourceLocation skillConfig = new ResourceLocation(NED.MOD_ID, "skill/config.json");
     public SkillsData(){
     }
-    public void loadJSONFile(MinecraftServer server) {
-        ResourceManager resourceManager = server.getResourceManager();
+    public void loadJSONFile(ResourceManager resourceManager) {
+        System.out.println("Load data file :" + skillConfig);
         resourceManager.getResource(skillConfig).ifPresent(resource -> {
             try {
+                System.out.println("Load data file con");
                 BufferedReader reader = resource.openAsReader();
                 StringBuilder jsonContent = new StringBuilder();
                 String line;
@@ -29,6 +31,8 @@ public class SkillsData {
                     jsonContent.append(line);
                 }
                 reader.close();
+
+                System.out.println("data file con :"+ jsonContent);
                 JsonObject jsonObject = JsonParser.parseString(jsonContent.toString()).getAsJsonObject();
                 for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
                     String key = entry.getKey();
@@ -36,6 +40,8 @@ public class SkillsData {
                     data.put(key, value);
                 }
 
+
+                System.out.println("data::"+data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

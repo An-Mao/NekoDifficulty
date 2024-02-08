@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class NewbornSkill extends Skill {
     //新生
     public NewbornSkill() {
-        super("Newborn");
+        super("newborn");
     }
 
     @Override

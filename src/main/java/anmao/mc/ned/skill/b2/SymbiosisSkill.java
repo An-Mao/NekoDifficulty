@@ -16,7 +16,7 @@ import java.util.List;
 public class SymbiosisSkill extends Skill {
     //共生
     public SymbiosisSkill() {
-        super("Symbiosis");
+        super("symbiosis");
     }
 
     @Override

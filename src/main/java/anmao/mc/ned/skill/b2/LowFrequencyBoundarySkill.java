@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class LowFrequencyBoundarySkill extends Skill {
     //低频结界
     public LowFrequencyBoundarySkill() {
-        super("LowFrequencyBoundary");
+        super("low_frequency_boundary");
     }
     @Override
     public void Event(EventData eventData, CompoundTag skillData) {

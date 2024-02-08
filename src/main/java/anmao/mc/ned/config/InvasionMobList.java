@@ -2,6 +2,7 @@ package anmao.mc.ned.config;
 
 import anmao.mc.ned.NED;
 import anmao.mc.ned.cap.invasion.InvasionCDT;
+import anmao.mc.ned.debug._Log;
 import anmao.mc.ned.lib.EntityHelper;
 import anmao.mc.ned.lib._Math;
 import com.google.gson.Gson;
@@ -29,7 +30,7 @@ public class InvasionMobList extends InvasionCDT {
         try (FileReader reader = new FileReader(fileName)) {
             mobList = gson.fromJson(reader, MobListJson[].class);
         } catch (IOException e) {
-            NED.LOG.error(e.getMessage());
+            _Log.LOGGER.error(e.getMessage());
         }
     }
     private void reset(){
@@ -50,7 +51,7 @@ public class InvasionMobList extends InvasionCDT {
         try (FileWriter writer = new FileWriter(fileName)) {
             writer.write(jsonString);
         } catch (IOException e) {
-            NED.LOG.error(e.getMessage());
+            _Log.LOGGER.error(e.getMessage());
         }
     }
     public void summonMob(ServerLevel level,double x,double y,double z){

@@ -14,7 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class SearingShieldSkill extends Skill {
     //灼热之盾
     public SearingShieldSkill() {
-        super("SearingShield");
+        super("searing_shield");
     }
     @Override
     public void Event(EventData eventData, CompoundTag skillData) {

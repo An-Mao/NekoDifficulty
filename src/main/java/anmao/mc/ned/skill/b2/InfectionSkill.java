@@ -11,7 +11,7 @@ import net.minecraft.world.effect.MobEffects;
 public class InfectionSkill extends Skill {
     //感染
     public InfectionSkill() {
-        super("Infection");
+        super("infection");
     }
 
     @Override

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Blocks;
 public class FrostbiteSkill extends Skill {
     //冰霜结界
     public FrostbiteSkill() {
-        super("Frostbite");
+        super("frostbite");
     }
     @Override
     public void Tick(LivingEntity livingEntity, CompoundTag skillData) {

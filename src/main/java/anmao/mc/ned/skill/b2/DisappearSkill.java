@@ -11,7 +11,7 @@ public class DisappearSkill extends Skill {
     //消失
     //一段时间后消失
     public DisappearSkill() {
-        super("Disappear");
+        super("disappear");
     }
 
     @Override

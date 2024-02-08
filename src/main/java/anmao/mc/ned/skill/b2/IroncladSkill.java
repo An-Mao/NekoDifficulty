@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 public class IroncladSkill extends Skill {
     //铁壁
     public IroncladSkill() {
-        super("Ironclad");
+        super("ironclad");
     }
 
     @Override

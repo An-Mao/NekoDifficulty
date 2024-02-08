@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Player;
 public class FettersSkill extends Skill {
     //禁锢
     public FettersSkill() {
-        super("Fetters");
+        super("fetters");
     }
 
     @Override

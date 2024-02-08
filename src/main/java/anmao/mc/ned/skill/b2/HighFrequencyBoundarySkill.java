@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class HighFrequencyBoundarySkill extends Skill {
     //高频结界
     public HighFrequencyBoundarySkill() {
-        super("HighFrequencyBoundary");
+        super("high_frequency_boundary");
     }
 
     @Override

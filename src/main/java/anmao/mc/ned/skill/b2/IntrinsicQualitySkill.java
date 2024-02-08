@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class IntrinsicQualitySkill extends Skill {
     //根性
     public IntrinsicQualitySkill() {
-        super("IntrinsicQuality");
+        super("intrinsic_quality");
     }
 
     @Override

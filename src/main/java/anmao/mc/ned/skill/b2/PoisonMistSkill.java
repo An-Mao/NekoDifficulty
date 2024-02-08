@@ -13,7 +13,7 @@ import net.minecraft.world.item.alchemy.Potions;
 public class PoisonMistSkill extends Skill {
     //毒雾
     public PoisonMistSkill() {
-        super("PoisonMist");
+        super("poison_mist");
     }
 
     @Override

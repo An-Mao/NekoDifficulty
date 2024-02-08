@@ -17,7 +17,7 @@ public class ProliferateSkill extends Skill {
     //扩散
     //死亡后为附近同类生物提供攻击，移速，减伤
     public ProliferateSkill() {
-        super("Proliferate");
+        super("proliferate");
     }
 
     @Override

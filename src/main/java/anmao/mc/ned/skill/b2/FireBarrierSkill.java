@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Blocks;
 public class FireBarrierSkill extends Skill {
     //火焰结界
     public FireBarrierSkill() {
-        super("FireBarrier");
+        super("fire_barrier");
     }
 
     @Override

@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 public class LifeAbsorbingSkill extends Skill {
     //生命吸收
     public LifeAbsorbingSkill() {
-        super("LifeAbsorbing");
+        super("life_absorbing");
     }
 
 }

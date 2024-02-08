@@ -19,7 +19,7 @@ public class ColdShieldSkill extends Skill {
     //大幅度减少冰以外的伤害
     //攻击力降低，攻速降低，对玩家造成伤害
     public ColdShieldSkill() {
-        super("ColdShield");
+        super("cold_shield");
     }
 
     @Override

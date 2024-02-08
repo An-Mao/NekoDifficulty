@@ -11,7 +11,7 @@ public class LifeAbsorbingEvent {
     public static void onAttack(LivingAttackEvent event){
         if (event.getSource().getEntity() instanceof LivingEntity livingEntity){
             livingEntity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {
-                if (skillCap.hasSkill("skill.ned.LifeAbsorbing")){
+                if (skillCap.hasSkill("skill.ned.life_absorbing")){
                     livingEntity.heal(event.getAmount() * 0.5F);
                 }
             });

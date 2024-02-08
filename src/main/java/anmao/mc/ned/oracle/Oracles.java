@@ -9,9 +9,9 @@ public class Oracles {
     private ImmutableMap<String,Oracle> ORACLES;
     private List<String> oracleKeys ;
     public Oracles(){
-        regAll();
+        //regAll();
     }
-    private void regAll(){
+    public void regAll(){
         ImmutableMap.Builder<String, Oracle> builder = ImmutableMap.builder();
         ServiceLoader<Oracle> oracles = ServiceLoader.load(Oracle.class);
         for (Oracle oracle : oracles) {

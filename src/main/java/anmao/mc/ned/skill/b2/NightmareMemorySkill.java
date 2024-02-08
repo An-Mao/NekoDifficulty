@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 public class NightmareMemorySkill extends Skill {
     //梦魇记忆
     public NightmareMemorySkill() {
-        super("NightmareMemory");
+        super("nightmare_memory");
     }
 
     @Override

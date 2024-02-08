@@ -10,7 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class LearnSkill extends Skill {
     //学习
     public LearnSkill() {
-        super("Learn");
+        super("learn");
     }
 
     @Override

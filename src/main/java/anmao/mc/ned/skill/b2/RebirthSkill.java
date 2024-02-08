@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 public class RebirthSkill extends Skill {
     //重生
     public RebirthSkill() {
-        super("Rebirth");
+        super("rebirth");
     }
 
     @Override

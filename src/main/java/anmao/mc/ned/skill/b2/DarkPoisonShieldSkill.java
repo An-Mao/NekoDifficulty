@@ -14,7 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class DarkPoisonShieldSkill extends Skill {
     //暗毒之盾
     public DarkPoisonShieldSkill() {
-        super("DarkPoisonShield");
+        super("dark_poison_shield");
     }
 
     @Override

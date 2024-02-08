@@ -5,6 +5,6 @@ import anmao.mc.ned.skill.Skill;
 public class ShieldOfPuritySkill extends Skill {
     //纯净之盾
     public ShieldOfPuritySkill() {
-        super("ShieldOfPurity");
+        super("shield_of_purity");
     }
 }

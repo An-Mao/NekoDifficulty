@@ -14,7 +14,7 @@ public class CurseSkill extends Skill {
     //诅咒
     //降低移速，攻击力，减伤
     public CurseSkill() {
-        super("Curse");
+        super("curse");
     }
 
     @Override

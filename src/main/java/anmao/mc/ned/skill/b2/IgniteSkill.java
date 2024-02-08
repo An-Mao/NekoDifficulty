@@ -10,7 +10,7 @@ import net.minecraft.world.level.Explosion;
 public class IgniteSkill extends Skill {
     //引燃
     public IgniteSkill() {
-        super("Ignite");
+        super("ignite");
     }
 
     @Override

@@ -1,6 +1,7 @@
 package anmao.mc.ned.cap.skill;
 
 import anmao.mc.ned.datatype.EventData;
+import anmao.mc.ned.skill.Skill;
 import anmao.mc.ned.skill.Skills;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -35,10 +36,10 @@ public class SkillCap {
     public void GiveRandomSkills(int num) {
         if (skills.isEmpty()) {
             Random random = new Random();
-            //String[] keys = Skills.getInstance().SKILLS.keySet().toArray(new String[0]);
-            if (Skills.getInstance().SKILL_KEYS.length > 0) {
+            int skillNumber = Skills.getInstance().skillKeys.size();
+            if (skillNumber > 0) {
                 for (int i = 0; i < num; i++) {
-                    giveNewSkill(Skills.getInstance().SKILL_KEYS[random.nextInt(Skills.getInstance().SKILL_KEYS.length)]);
+                    giveNewSkill(Skills.getInstance().skillKeys.get(random.nextInt(skillNumber)));
                 }
             }
         }
@@ -68,8 +69,8 @@ public class SkillCap {
         }
         return components;
     }
-    public List<String> getAllSkill(){
-        return skills.keySet().stream().toList();
+    public List<String> getAllSkillID(){
+        return skills.values().stream().toList();
     }
 
 

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 public class SenseOfCompetitionSkill extends Skill {
     //竞争意识
     public SenseOfCompetitionSkill() {
-        super("SenseOfCompetition");
+        super("sense_of_competition");
     }
 
     @Override

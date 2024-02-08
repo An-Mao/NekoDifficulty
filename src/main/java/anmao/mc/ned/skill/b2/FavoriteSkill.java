@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 public class FavoriteSkill extends Skill {
     //喜欢
     public FavoriteSkill() {
-        super("Favorite");
+        super("favorite");
     }
     @Override
     public void Event(EventData eventData, CompoundTag skillData) {

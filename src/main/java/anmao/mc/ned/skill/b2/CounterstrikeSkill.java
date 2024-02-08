@@ -9,7 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 public class CounterstrikeSkill extends Skill {
     //反刺
     public CounterstrikeSkill() {
-        super("Counterstrike");
+        super("counterstrike");
     }
 
     @Override

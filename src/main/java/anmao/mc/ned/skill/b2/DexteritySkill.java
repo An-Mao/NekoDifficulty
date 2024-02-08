@@ -12,7 +12,7 @@ import java.util.Random;
 public class DexteritySkill extends Skill {
     //灵巧
     public DexteritySkill() {
-        super("Dexterity");
+        super("dexterity");
     }
 
     @Override

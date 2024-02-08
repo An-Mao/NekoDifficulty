@@ -15,7 +15,7 @@ import java.util.List;
 public class SubtotalSkill extends Skill {
     //共济
     public SubtotalSkill() {
-        super("Subtotal");
+        super("subtotal");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class SubtotalSkill extends Skill {
                 List<LivingEntity> se = new ArrayList<>();
                 for (LivingEntity entity : entities){
                     entity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {
-                        if (skillCap.hasSkill("skill.ned.Subtotal")){
+                        if (skillCap.hasSkill("skill.ned.subtotal")){
                             se.add(entity);
                         }
                     });

@@ -13,7 +13,7 @@ public class ComprehendSkill extends Skill {
     //领悟
     //生命低于某个值时，攻击力和移速大幅提升
     public ComprehendSkill() {
-        super("Comprehend");
+        super("comprehend");
     }
     @Override
     public void Event(EventData eventData, CompoundTag skillData) {

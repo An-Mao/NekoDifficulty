@@ -9,7 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 public class CrystallographySkill extends Skill {
     //结晶
     public CrystallographySkill() {
-        super("Crystallography");
+        super("crystallography");
     }
 
     @Override

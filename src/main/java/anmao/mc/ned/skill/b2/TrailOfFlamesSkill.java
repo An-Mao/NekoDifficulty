@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 public class TrailOfFlamesSkill extends Skill {
     //烈焰轨迹
     public TrailOfFlamesSkill() {
-        super("trail_of_Flames");
+        super("trail_of_flames");
     }
 
     @Override

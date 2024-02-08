@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 public class StealSkill extends Skill {
     //窃取
     public StealSkill() {
-        super("Steal");
+        super("steal");
     }
 
     @Override

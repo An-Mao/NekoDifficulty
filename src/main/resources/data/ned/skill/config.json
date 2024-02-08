@@ -1,16 +1,203 @@
 {
-  "skill id": {
-    "enable": true,
-    "par": "1"
+  "alone": {
+    "enable": true
   },
-  "skill id2": {
-    "enable": true,
-    "par": 1,
-    "par2": false
+  "boom": {
+    "enable": true
   },
-  "skill id3": {
-    "enable": true,
-    "par": 1,
-    "par2": false
+  "chao": {
+    "enable": true
+  },
+  "chase_away": {
+    "enable": false
+  },
+  "cohesion": {
+    "enable": true
+  },
+  "cold_shield": {
+    "enable": true
+  },
+  "comprehend": {
+    "enable": true
+  },
+  "conductivity": {
+    "enable": true
+  },
+  "corrosion": {
+    "enable": false
+  },
+  "counterstrike": {
+    "enable": true
+  },
+  "crystallography": {
+    "enable": true
+  },
+  "curse": {
+    "enable": true
+  },
+  "dark_poison_shield": {
+    "enable": true
+  },
+  "dark_position": {
+    "enable": true
+  },
+  "dexterity": {
+    "enable": true
+  },
+  "disappear": {
+    "enable": true
+  },
+  "dislike": {
+    "enable": true
+  },
+  "energy_shield": {
+    "enable": true
+  },
+  "fast": {
+    "enable": true
+  },
+  "favorite": {
+    "enable": true
+  },
+  "fetters": {
+    "enable": true
+  },
+  "fire_barrier": {
+    "enable": true
+  },
+  "frostbite": {
+    "enable": true
+  },
+  "frost_trail": {
+    "enable": false
+  },
+  "high_frequency_boundary": {
+    "enable": true
+  },
+  "ignite": {
+    "enable": true
+  },
+  "imperishable": {
+    "enable": false
+  },
+  "infection": {
+    "enable": true
+  },
+  "interruption_of_growth": {
+    "enable": false
+  },
+  "intrinsic_quality": {
+    "enable": true
+  },
+  "ironclad": {
+    "enable": true
+  },
+  "leaders": {
+    "enable": false
+  },
+  "learn": {
+    "enable": true
+  },
+  "left_guardian": {
+    "enable": false
+  },
+  "life_absorbing": {
+    "enable": true
+  },
+  "low_frequency_boundary": {
+    "enable": true
+  },
+  "mirroring": {
+    "enable": false
+  },
+  "newborn": {
+    "enable": true
+  },
+  "nightmare_memory": {
+    "enable": true
+  },
+  "order": {
+    "enable": false
+  },
+  "poisoned_egg": {
+    "enable": true
+  },
+  "poison_mist": {
+    "enable": true
+  },
+  "powerful": {
+    "enable": true
+  },
+  "proliferate": {
+    "enable": true
+  },
+  "rainbow_position": {
+    "enable": true
+  },
+  "rebirth": {
+    "enable": true
+  },
+  "recover": {
+    "enable": true
+  },
+  "reincarnation": {
+    "enable": false
+  },
+  "repulse": {
+    "enable": true
+  },
+  "resistant": {
+    "enable": true
+  },
+  "reverse_entropy": {
+    "enable": false
+  },
+  "right_blessing": {
+    "enable": false
+  },
+  "searing_shield": {
+    "enable": true
+  },
+  "sense_of_competition": {
+    "enable": true
+  },
+  "shield_of_chaos": {
+    "enable": false
+  },
+  "shield_of_purity": {
+    "enable": false
+  },
+  "steadfastness": {
+    "enable": false
+  },
+  "steal": {
+    "enable": true
+  },
+  "subtotal": {
+    "enable": true
+  },
+  "summon": {
+    "enable": false
+  },
+  "swirl": {
+    "enable": false
+  },
+  "symbiosis": {
+    "enable": true
+  },
+  "teleportation": {
+    "enable": false
+  },
+  "tentacle": {
+    "enable": false
+  },
+  "thunderthorn_shield": {
+    "enable": true
+  },
+  "timid": {
+    "enable": true
+  },
+  "trail_of_flames": {
+    "enable": true
   }
 }

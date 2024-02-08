@@ -14,7 +14,7 @@ import net.minecraft.world.phys.Vec3;
 public class PoisonedEggSkill extends Skill {
     //毒蛋
     public PoisonedEggSkill() {
-        super("PoisonedEgg");
+        super("poisoned_egg");
     }
 
     @Override

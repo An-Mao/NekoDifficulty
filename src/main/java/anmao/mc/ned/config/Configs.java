@@ -8,13 +8,7 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 @Mod.EventBusSubscriber(modid = NED.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Configs {
-    public static final ForgeConfigSpec GENERAL_SPEC;
-
-    static {
-        ForgeConfigSpec.Builder configBuilder = new ForgeConfigSpec.Builder();
-        setupConfig(configBuilder);
-        GENERAL_SPEC = configBuilder.build();
-    }
+    private static final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
     private static ForgeConfigSpec.IntValue DamageScaleApplicableTarget;
     private static ForgeConfigSpec.DoubleValue DamageScaleWithMaxHealth;
     private static ForgeConfigSpec.DoubleValue DamageScaleMinDamage;
@@ -31,6 +25,12 @@ public class Configs {
     public static InvasionMobList InvasionMobList = new InvasionMobList();
 
     public static ForgeConfigSpec.IntValue SkillMobMaxSkill;
+    public static final ForgeConfigSpec SPEC;
+
+    static {
+        setupConfig();
+        SPEC = builder.build();
+    }
 
     public static int ds_applicableTarget;
     public static float ds_scaleWithMaxHealth;
@@ -47,7 +47,7 @@ public class Configs {
     public static int skill_mobMaxSkill;
 
 
-    private static void setupConfig(ForgeConfigSpec.Builder builder) {
+    private static void setupConfig() {
         builder.comment("===============================================");
         builder.comment("===========Neko Endless Difficulty=============");
         builder.comment("==================Ver 1.0.0====================");

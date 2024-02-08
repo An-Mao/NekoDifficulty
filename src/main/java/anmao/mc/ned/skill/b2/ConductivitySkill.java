@@ -11,7 +11,7 @@ import net.minecraft.world.entity.LightningBolt;
 public class ConductivitySkill extends Skill {
     //导电体质
     public ConductivitySkill() {
-        super("Conductivity");
+        super("conductivity");
     }
 
     @Override

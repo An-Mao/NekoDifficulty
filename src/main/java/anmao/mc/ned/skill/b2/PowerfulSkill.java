@@ -12,7 +12,7 @@ public class PowerfulSkill extends Skill {
     //强力
     //攻击力大幅提升
     public PowerfulSkill() {
-        super("Powerful");
+        super("powerful");
     }
 
     @Override

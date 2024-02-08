@@ -12,7 +12,7 @@ public class RepulseSkill extends Skill {
     //击退
     //增加击退距离
     public RepulseSkill() {
-        super("Repulse");
+        super("repulse");
     }
 
     @Override

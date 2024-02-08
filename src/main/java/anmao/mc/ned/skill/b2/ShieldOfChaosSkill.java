@@ -5,6 +5,6 @@ import anmao.mc.ned.skill.Skill;
 public class ShieldOfChaosSkill extends Skill {
     //混沌之盾
     public ShieldOfChaosSkill() {
-        super("ShieldOfChaos");
+        super("shield_of_chaos");
     }
 }
