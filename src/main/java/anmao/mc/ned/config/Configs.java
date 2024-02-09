@@ -24,6 +24,7 @@ public class Configs {
     private static ForgeConfigSpec.IntValue InvasionDayTime;
     public static InvasionMobList InvasionMobList = new InvasionMobList();
 
+
     public static ForgeConfigSpec.IntValue SkillMobMaxSkill;
     public static final ForgeConfigSpec SPEC;
 

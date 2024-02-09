@@ -1,6 +1,5 @@
 package anmao.mc.ned.cap.oracles;
 
-import anmao.mc.ned.cap.skill.SkillCap;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.Capability;

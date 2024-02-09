@@ -2,10 +2,12 @@ package anmao.mc.ned;
 
 import anmao.mc.ned.attribute.AttributeReg;
 import anmao.mc.ned.config.ClientConfig;
+import anmao.mc.ned.config.Config;
 import anmao.mc.ned.config.Configs;
 import anmao.mc.ned.effect.EffectRegister;
 import anmao.mc.ned.lib.ItemHelper;
 import anmao.mc.ned.mob$skill.MobSkillRegister;
+import anmao.mc.ned.mob$skill.MobSkills;
 import anmao.mc.ned.net.NEDNetCore;
 import anmao.mc.ned.oracle.Oracles;
 import anmao.mc.ned.skill.Skills;
@@ -29,6 +31,10 @@ public class NED
     private static final Oracles os = Oracles.getInstance();
     public NED()
     {
+        //初始化
+        Config.init();
+        //最初加载
+        Config.load();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         AttributeReg.register(modEventBus);
         EffectRegister.register(modEventBus);
@@ -45,6 +51,7 @@ public class NED
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        MobSkills.init();
         NEDNetCore.reg();
         _load();
     }

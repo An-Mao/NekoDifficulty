@@ -14,13 +14,13 @@ import org.jetbrains.annotations.Nullable;
 public class MobSkillProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
     public static Capability<MobSkillCap> MOB_SKILLS = CapabilityManager.get(new CapabilityToken<MobSkillCap>() {
     });
-    private MobSkillCap skills = null;
+    private MobSkillCap mobSkillCap = null;
     private final LazyOptional<MobSkillCap> optional = LazyOptional.of(this::create);
     private MobSkillCap create() {
-        if (skills == null){
-            skills = new MobSkillCap();
+        if (mobSkillCap == null){
+            mobSkillCap = new MobSkillCap();
         }
-        return skills;
+        return mobSkillCap;
     }
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {

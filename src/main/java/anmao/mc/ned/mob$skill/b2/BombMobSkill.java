@@ -11,9 +11,9 @@ import net.minecraftforge.eventbus.api.Event;
 
 public class BombMobSkill extends MobSkill {
     //投弹
-    public BombMobSkill() {
+    public BombMobSkill(String id) {
+        super(id);
     }
-
     @Override
     public <T extends Event> void event(T event, CompoundTag dat) {
         if (event instanceof LivingEvent.LivingTickEvent livingTickEvent) {
@@ -45,10 +45,5 @@ public class BombMobSkill extends MobSkill {
                 dat.putInt("tick",t+1);
             }
         }
-    }
-
-    @Override
-    public void Tick(LivingEntity livingEntity, CompoundTag skillData) {
-
     }
 }

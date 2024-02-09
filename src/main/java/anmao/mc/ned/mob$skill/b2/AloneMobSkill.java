@@ -16,7 +16,8 @@ import java.util.List;
 public class AloneMobSkill extends MobSkill {
     //孤独
     //怪物越少，攻击力，移速，减伤提升越多
-    public AloneMobSkill() {
+    public AloneMobSkill(String id) {
+        super(id);
     }
 
     @Override

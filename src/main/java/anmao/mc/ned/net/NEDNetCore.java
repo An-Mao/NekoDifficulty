@@ -2,7 +2,6 @@ package anmao.mc.ned.net;
 
 import anmao.mc.ned.NED;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
@@ -29,7 +28,10 @@ public class NEDNetCore {
                 .encoder(SkillDataSendToClient::toBytes)
                 .consumerMainThread(SkillDataSendToClient::handle).add();
         //INSTANCE.messageBuilder(Packet_Index_Core.class,id()).decoder(Packet_Index_Core::Decoder).encoder(Packet_Index_Core::Encoder).consumerMainThread(Packet_Index_Core::handle).add();
-
+        INSTANCE.messageBuilder(MobSkillDataSendToClient.class,id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(MobSkillDataSendToClient::new)
+                .encoder(MobSkillDataSendToClient::toBytes)
+                .consumerMainThread(MobSkillDataSendToClient::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg){
