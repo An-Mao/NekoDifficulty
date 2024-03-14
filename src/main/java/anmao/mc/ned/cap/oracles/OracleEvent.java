@@ -1,7 +1,7 @@
 package anmao.mc.ned.cap.oracles;
 
+import anmao.mc.amlib.advancement.AdvancementHelper;
 import anmao.mc.ned.NED;
-import anmao.mc.ned.lib.AdvancementHelper;
 import anmao.mc.ned.oracle.Oracle;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -71,7 +71,7 @@ public class OracleEvent {
             if (event.getEntity() instanceof ServerPlayer serverPlayer){
                 //System.out.println("adv::"+ event.getAdvancement().getId());
                 for (String id :ADVS) {
-                    if (AdvancementHelper.isVanillaAdvancement(event.getAdvancement(), id)) {
+                    if (AdvancementHelper.isSpecifyAdvancement(event.getAdvancement(), id)) {
                         serverPlayer.getCapability(OracleProvider.PLAYER_ORACLE).ifPresent(oracleCap -> {
                             if (!oracleCap.isMaxPlace()) {
                                 oracleCap.addPace();

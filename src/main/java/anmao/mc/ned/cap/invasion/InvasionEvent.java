@@ -1,7 +1,8 @@
 package anmao.mc.ned.cap.invasion;
 
 import anmao.mc.ned.NED;
-import anmao.mc.ned.config.Configs;
+import anmao.mc.ned.config.invasion.InvasionConfig;
+import anmao.mc.ned.config.invasion.InvasionMobList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -56,7 +57,7 @@ public class InvasionEvent extends InvasionCDT{
     @SubscribeEvent
     public void onDamage(LivingDamageEvent event){
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level().isClientSide && isInvasionMob(livingEntity) && Configs.invasion_immunityNonPlayerDamage){
+        if (!livingEntity.level().isClientSide && isInvasionMob(livingEntity) && InvasionConfig.INSTANCE.getDatas().isImmunityNonPlayerDamage()){
             if (!(event.getSource().getEntity() instanceof Player)){
                 event.setCanceled(true);
             }
@@ -64,6 +65,6 @@ public class InvasionEvent extends InvasionCDT{
     }
 
     public static boolean isInvasionMob(LivingEntity livingEntity){
-        return livingEntity.getPersistentData().getBoolean(SAVE_INVASION_KEY);
+        return livingEntity.getPersistentData().getBoolean(InvasionMobList.SAVE_INVASION_KEY);
     }
 }

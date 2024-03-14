@@ -11,17 +11,16 @@ import java.util.function.Supplier;
 public class MobSkillEvent {
     public static Supplier<IForgeRegistry<MobSkill>> registrySupplier = null;
     public void onNewRegistry(NewRegistryEvent event){
+
         RegistryBuilder<MobSkill> registryBuilder = new RegistryBuilder<>();
         registryBuilder.setName(new ResourceLocation(NED.MOD_ID, "mob_skill")).setDefaultKey(new ResourceLocation(NED.MOD_ID, "mob_skill"));
         registrySupplier = event.create(registryBuilder);
     }
-    @SubscribeEvent
     public static void registerMobSkills(RegisterEvent event) {
         if (event.getRegistryKey().equals(MobSkillRegister.MOB_SKILL.getRegistryKey())){
             //registers();
         }
     }
-    @SubscribeEvent
     public void onMissing(final MissingMappingsEvent event) {
         event.getMappings(ForgeRegistries.Keys.ITEMS, NED.MOD_ID).stream()
                 .filter(mapping -> mapping.getKey().getPath().contains("mob_skill"))

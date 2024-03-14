@@ -2,7 +2,7 @@ package anmao.mc.ned.widget.damage;
 
 import anmao.mc.ned.NED;
 import anmao.mc.ned.cap.invasion.InvasionEvent;
-import anmao.mc.ned.config.Configs;
+import anmao.mc.ned.config.damage_scale.DamageScaleConfig;
 import anmao.mc.ned.lib.EntityHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,28 +20,28 @@ public class DamageScaleEvent {
     @SubscribeEvent
     public static void onHurt(LivingHurtEvent event){
         LivingEntity entity = event.getEntity();
-        if (EntityHelper.isServerLevel(entity) && !(entity instanceof ServerPlayer) && Configs.ds_applicableTarget > 0 ){
-            if (Configs.ds_applicableTarget == 1){
+        if (EntityHelper.isServerLevel(entity) && !(entity instanceof ServerPlayer) && DamageScaleConfig.INSTANCE.getDatas().getApplicableTarget() > 0 ){
+            if (DamageScaleConfig.INSTANCE.getDatas().getApplicableTarget() == 1){
                 if (!InvasionEvent.isInvasionMob(entity)){
                     return;
                 }
             }
             float oldDamage = event.getAmount();
-            float maxDamage = Math.max(Configs.ds_minDamage,entity.getMaxHealth() * Configs.ds_scaleWithMaxHealth);
+            float maxDamage = Math.max(DamageScaleConfig.INSTANCE.getDatas().getMinDamage(),entity.getMaxHealth() * DamageScaleConfig.INSTANCE.getDatas().getScaleWithHealth());
             event.setAmount(Math.min(oldDamage, maxDamage));
         }
     }
     @SubscribeEvent
     public static void onDamage(LivingDamageEvent event){
         LivingEntity entity = event.getEntity();
-        if (EntityHelper.isServerLevel(entity) && !(entity instanceof ServerPlayer) && Configs.ds_applicableTarget > 0 ){
-            if (Configs.ds_applicableTarget == 1){
+        if (EntityHelper.isServerLevel(entity) && !(entity instanceof ServerPlayer) && DamageScaleConfig.INSTANCE.getDatas().getApplicableTarget() > 0 ){
+            if (DamageScaleConfig.INSTANCE.getDatas().getApplicableTarget() == 1){
                 if (!InvasionEvent.isInvasionMob(entity)){
                     return;
                 }
             }
             float oldDamage = event.getAmount();
-            float maxDamage = Math.max(Configs.ds_minDamage,entity.getMaxHealth() * Configs.ds_scaleWithMaxHealth);
+            float maxDamage = Math.max(DamageScaleConfig.INSTANCE.getDatas().getMinDamage(),entity.getMaxHealth() * DamageScaleConfig.INSTANCE.getDatas().getScaleWithHealth());
             event.setAmount(Math.min(oldDamage, maxDamage));
         }
     }

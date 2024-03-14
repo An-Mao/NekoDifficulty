@@ -1,6 +1,6 @@
 package anmao.mc.ned.cap.oracles;
 
-import anmao.mc.ned.lib._Math;
+import anmao.mc.amlib.math._Random;
 import anmao.mc.ned.oracle.Oracle;
 import anmao.mc.ned.oracle.Oracles;
 import net.minecraft.nbt.CompoundTag;
@@ -30,7 +30,7 @@ public class OracleCap {
     }
     public void giveOracle(){
         if (oracle == null && pace >= maxPace){
-            if (time > _Math.getIntRandomNumber(3,7)){
+            if (time > _Random.getIntRandomNumber(3,7)){
                 time = 0;
                 oracle = Oracles.getInstance().getRandomOracle();
             }

@@ -31,16 +31,6 @@ public class EntityHelper {
     public static EntityType<?> getEntityTypeNew(String id){
         return ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(id));
     }
-    private void spawnZombieNearPlayer(Level level, double x, double y, double z , String id) {
-        double xOffset = (level.random.nextDouble() - 0.5) * 10;
-        double zOffset = (level.random.nextDouble() - 0.5) * 10;
-        double spawnX = x + xOffset;
-        double spawnZ = z + zOffset;
-        Zombie zombie = new Zombie(level);
-        zombie.setPos(spawnX, y, spawnZ);
-        zombie.addTag(id);
-        level.addFreshEntity(zombie);
-    }
     public static List<? extends LivingEntity> getLivingEntities(LivingEntity livingEntity){
         return getLivingEntities(livingEntity,10);
     }

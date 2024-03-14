@@ -1,8 +1,6 @@
 package anmao.mc.ned.mob$skill;
 
 import anmao.mc.ned.NED;
-import anmao.mc.ned.config.Config;
-import com.google.gson.JsonObject;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -37,9 +35,5 @@ public abstract class MobSkill extends MobSkillCDT implements MobSkillInterface 
     }
     public ResourceLocation getTexture() {
         return texture;
-    }
-
-    public JsonObject getSkillData(){
-        return Config.getMobSkillConfig().getData(id);
     }
 }

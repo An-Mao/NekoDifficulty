@@ -4,8 +4,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ComponentHelp {
     public static void sendFormatMsg (ServerPlayer serverPlayer, String s, Object... data){

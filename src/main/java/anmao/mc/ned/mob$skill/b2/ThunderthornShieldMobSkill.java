@@ -1,7 +1,7 @@
 package anmao.mc.ned.mob$skill.b2;
 
-import anmao.mc.ned.lib.AttributeHelper;
-import anmao.mc.ned.lib._Math;
+import anmao.mc.amlib.attribute.AttributeHelper;
+import anmao.mc.amlib.math._Random;
 import anmao.mc.ned.mob$skill.MobSkill;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +22,7 @@ public class ThunderthornShieldMobSkill extends MobSkill {
         if (event instanceof LivingHurtEvent hurtEvent){
             if (!hurtEvent.getSource().typeHolder().is(DamageTypes.LIGHTNING_BOLT.location())){
                 if (hurtEvent.getSource().getEntity() instanceof ServerPlayer serverPlayer){
-                    int r = _Math.getIntRandomNumber(1,3);
+                    int r = _Random.getIntRandomNumber(1,3);
                     if (r == 1) {
                         AttributeHelper.setTempAttribute(serverPlayer, Attributes.ATTACK_DAMAGE,ATTRIBUTE_SKILL_ATTACK_DAMAGE,-0.7D, AttributeModifier.Operation.ADDITION,200);
                     }else if (r == 2){

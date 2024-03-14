@@ -1,6 +1,6 @@
 package anmao.mc.ned.mob$skill.b2;
 
-import anmao.mc.ned.cap.skill.SkillProvider;
+import anmao.mc.ned.cap.mob$skill.MobSkillProvider;
 import anmao.mc.ned.lib.EntityHelper;
 import anmao.mc.ned.mob$skill.MobSkill;
 import net.minecraft.nbt.CompoundTag;
@@ -25,8 +25,8 @@ public class SubtotalMobSkill extends MobSkill {
                 List<? extends LivingEntity> entities = EntityHelper.getLivingEntities(hurtEvent.getEntity(), 10);
                 List<LivingEntity> se = new ArrayList<>();
                 for (LivingEntity entity : entities){
-                    entity.getCapability(SkillProvider.MOB_SKILLS).ifPresent(skillCap -> {
-                        if (skillCap.hasSkill("skill.ned.subtotal")){
+                    entity.getCapability(MobSkillProvider.MOB_SKILLS).ifPresent(mobSkillCap -> {
+                        if (mobSkillCap.hasMobSkillById(this.GetID())){
                             se.add(entity);
                         }
                     });

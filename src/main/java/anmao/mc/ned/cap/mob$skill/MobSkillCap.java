@@ -1,6 +1,6 @@
 package anmao.mc.ned.cap.mob$skill;
 
-import anmao.mc.ned.config.Configs;
+import anmao.mc.ned.config.general.GeneralConfig;
 import anmao.mc.ned.mob$skill.MobSkills;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -27,7 +27,7 @@ public class MobSkillCap {
         if (n > 0) {
             mobSkills.clear();
             Random random = new Random();
-            for (int i = 0; i < Configs.skill_mobMaxSkill; i++) {
+            for (int i = 0; i < GeneralConfig.INSTANCE.getDatas().getMobMaxSkill(); i++) {
                 giveNewSkill(MobSkills.getAllMobSkillId().get(random.nextInt(n)));
             }
         }

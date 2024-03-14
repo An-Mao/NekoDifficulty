@@ -2,7 +2,10 @@ package anmao.mc.ned.oracle;
 
 import com.google.common.collect.ImmutableMap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.ServiceLoader;
 
 public class Oracles {
     private static final Oracles instance = new Oracles();

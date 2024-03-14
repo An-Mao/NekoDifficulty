@@ -1,10 +1,11 @@
 package anmao.mc.ned.cap.invasion;
 
+import anmao.mc.amlib.math._Random;
+import anmao.mc.amlib.time.TimeHelper;
 import anmao.mc.ned.ConstantDataTable;
-import anmao.mc.ned.config.Configs;
+import anmao.mc.ned.config.invasion.InvasionConfig;
+import anmao.mc.ned.config.invasion.InvasionMobList;
 import anmao.mc.ned.lib.ComponentHelp;
-import anmao.mc.ned.lib.TimeHelper;
-import anmao.mc.ned.lib._Math;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,7 +21,7 @@ public class Invasion extends InvasionCDT{
     private int lastCheckDay = 0;//last check day
     private int duration = 0;//invasion duration time
     private int wave = 0;//invasion wave
-    private final int singleWavesTime = Configs.invasion_duration / (Configs.invasion_waves + 1);
+    private final int singleWavesTime = InvasionConfig.INSTANCE.getDatas().getDuration() / (InvasionConfig.INSTANCE.getDatas().getWaves() + 1);
 
 
     private boolean isInvasion(){
@@ -64,7 +65,7 @@ public class Invasion extends InvasionCDT{
                             sendPlayerMsg(level, MSG_WAVES, wave);
                             List<ServerPlayer> players = level.getServer().getPlayerList().getPlayers();
                             for (ServerPlayer player : players) {
-                                Configs.InvasionMobList.summonMob(player.serverLevel(), player.getX(), player.getY(), player.getZ());
+                                InvasionMobList.INSTANCE.summonMob(player.serverLevel(), player.getX(), player.getY(), player.getZ());
                             }
                         }
                     }
@@ -72,16 +73,16 @@ public class Invasion extends InvasionCDT{
             } else if (type == TYPE_STOP) {
                 if (canInvasion(day)) {
                     type = TYPE_PRE;
-                    if (Configs.invasion_dayTime == -1) {
-                        startTime = _Math.getIntRandomNumber(ConstantDataTable.MinecraftDayMinTick, ConstantDataTable.MinecraftDayMaxTick);
+                    if (InvasionConfig.INSTANCE.getDatas().getDayTime() == -1) {
+                        startTime = _Random.getIntRandomNumber(ConstantDataTable.MinecraftDayMinTick, ConstantDataTable.MinecraftDayMaxTick);
                     } else {
-                        startTime = Configs.invasion_dayTime;
+                        startTime = InvasionConfig.INSTANCE.getDatas().getDayTime();
                     }
-                    duration = Configs.invasion_duration;
+                    duration = InvasionConfig.INSTANCE.getDatas().getDuration();
                     lastInvasionDay = day;
                     spawnTime = 0;
                     wave = -1;
-                    sendPlayerMsg(level, MSG_PRE, TimeHelper.FormatDate(TimeHelper.GetDayTime(time)), TimeHelper.FormatDate(startTime), TimeHelper.tickToTime(duration), Configs.invasion_waves);
+                    sendPlayerMsg(level, MSG_PRE, TimeHelper.FormatDate(TimeHelper.GetDayTime(time)), TimeHelper.FormatDate(startTime), TimeHelper.tickToTime(duration), InvasionConfig.INSTANCE.getDatas().getWaves());
                 }
             }
         }
@@ -101,10 +102,10 @@ public class Invasion extends InvasionCDT{
             return false;
         }
         lastCheckDay = day;
-        if (day - lastInvasionDay >= Configs.invasion_maxDayInterval){
+        if (day - lastInvasionDay >= InvasionConfig.INSTANCE.getDatas().getMaxDayInterval()){
             return true;
         }
-        return day > lastInvasionDay && day - lastInvasionDay > Configs.invasion_minDayInterval && _Math.isHit(Configs.invasion_probability);
+        return day > lastInvasionDay && day - lastInvasionDay > InvasionConfig.INSTANCE.getDatas().getMinDayInterval() && _Random.getRandomFloat() < InvasionConfig.INSTANCE.getDatas().getProbability();
     }
     public void saveNBTData(CompoundTag nbt)
     {

@@ -1,9 +1,9 @@
 package anmao.mc.ned.mob$skill;
 
+import anmao.mc.amlib.render.DrawImage;
 import anmao.mc.ned.NED;
 import anmao.mc.ned.cap.mob$skill.MobSkillProvider;
-import anmao.mc.ned.config.ClientConfig;
-import anmao.mc.ned.lib.Draw;
+import anmao.mc.ned.config.client.ClientConfig;
 import anmao.mc.ned.lib.math.UniformCircleDistribution;
 import anmao.mc.ned.lib.math._Math;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -29,10 +29,10 @@ public class MobSkillRender {
     private static double rotationAngle = 0;
     //private static final double ra = Math.PI / ClientConfig.getSkillRenderRotationAngle() ;
     public static double getAngle(){
-        if (ClientConfig.getSkillRenderRotationAngle() == 0){
+        if (ClientConfig.INSTANCE.getSkillRenderRotationAngle() == 0){
             return 0;
         }
-        rotationAngle += Math.PI / ClientConfig.getSkillRenderRotationAngle() ;
+        rotationAngle += Math.PI / ClientConfig.INSTANCE.getSkillRenderRotationAngle() ;
         if (rotationAngle >= _Math.TWICE_PI) {
             rotationAngle = 0.0;
         }
@@ -41,7 +41,7 @@ public class MobSkillRender {
     @SubscribeEvent
     public static void onRender(RenderNameTagEvent event){
         if (event.getEntity() instanceof LivingEntity livingEntity) {
-            if (ClientConfig.getSkillRenderType() == 0){
+            if (ClientConfig.INSTANCE.getSkillRenderType() == 0){
                 return;
             }
             livingEntity.getCapability(MobSkillProvider.MOB_SKILLS).ifPresent(mobSkillCap -> {
@@ -72,14 +72,14 @@ public class MobSkillRender {
             Point2D.Double point = pointPoss.get(i);
             poseStack.pushPose();
             poseStack.translate(point.x-16,0,point.y);
-            if (ClientConfig.getSkillRenderType() == 1) {
+            if (ClientConfig.INSTANCE.getSkillRenderType() == 1) {
                 ResourceLocation icon = MobSkills.getMobSkill(id).getTexture();
                 RenderSystem.setShaderTexture(0, icon);
                 RenderSystem.enableBlend();
                 RenderSystem.defaultBlendFunc();
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                Draw.blit(poseStack, icon, 0, 0, 0, 0, 0, 32, 32, 32, 32);
-            }else if (ClientConfig.getSkillRenderType() == 2){
+                DrawImage.blit(poseStack, icon, 0, 0, 0, 0, 0, 32, 32, 32, 32);
+            }else if (ClientConfig.INSTANCE.getSkillRenderType() == 2){
                 MultiBufferSource.BufferSource bufferSource = MC.renderBuffers().bufferSource();
                 font.drawInBatch(MobSkills.getMobSkill(id).GetName(), 0, 0, -1, false, poseStack.last().pose(), bufferSource, Font.DisplayMode.NORMAL, 0, packedLight);
             }

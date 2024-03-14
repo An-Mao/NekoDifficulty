@@ -1,7 +1,7 @@
 package anmao.mc.ned.mob$skill.b2;
 
+import anmao.mc.amlib.attribute.AttributeHelper;
 import anmao.mc.ned.attribute.NEDAttributes;
-import anmao.mc.ned.lib.AttributeHelper;
 import anmao.mc.ned.mob$skill.MobSkill;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;

@@ -26,12 +26,12 @@ public class ChaoClientEvent {
                 double xi = speed * Math.sin(phi) * Math.cos(theta);
                 double zi = speed * Math.sin(phi) * Math.sin(theta);
                 //double dx = player.getX() + xi;
-                double dy = player.getY();
+                //double dy = player.getY();
                 //double dz = player.getZ() + zi;
-                //System.out.println("xi{" + xi + "} zi{" + zi + "} dx{" + dx + "} dy{" + dy + "} dz{" + dz + "}");
-                double distance = Math.sqrt(xi * xi + dy * dy + zi * zi);
+                //System.out.println("xi{" + xi + "} zi{" + zi + "} dy{" + dy + "}");
+                double distance = Math.sqrt(xi * xi + zi * zi);
                 if (distance > 0.1) {
-                    player.lerpMotion(xi, dy, zi);
+                    player.lerpMotion(xi, 0, zi);
                 } else {
                     player.lerpMotion(0, 0, 0);
                 }

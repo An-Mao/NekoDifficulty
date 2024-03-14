@@ -21,12 +21,6 @@ public class NEDNetCore {
             PROTOCOL_VERSION::equals
     );
     public static void  reg(){
-        //INSTANCE.registerMessage(id(), Packet_Index_ServerToClient.class,);
-
-        INSTANCE.messageBuilder(SkillDataSendToClient.class,id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SkillDataSendToClient::new)
-                .encoder(SkillDataSendToClient::toBytes)
-                .consumerMainThread(SkillDataSendToClient::handle).add();
         //INSTANCE.messageBuilder(Packet_Index_Core.class,id()).decoder(Packet_Index_Core::Decoder).encoder(Packet_Index_Core::Encoder).consumerMainThread(Packet_Index_Core::handle).add();
         INSTANCE.messageBuilder(MobSkillDataSendToClient.class,id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(MobSkillDataSendToClient::new)
